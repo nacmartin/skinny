@@ -1,0 +1,16 @@
+cache/*
+log/*
+config/databases.yml
+web/uploads/*
+*.svn*
+lib/model/om/*
+lib/model/map/*
+plugins/sfGuardPlugin/lib/model/om/*
+plugins/sfGuardPlugin/lib/model/map/*
+plugins/sfGuardPlugin/lib/form/base/*
+plugins/sfGuardPlugin/lib/filter/base/*
+plugins/sfCombinePlugin/lib/model/om/*
+plugins/sfCombinePlugin/lib/model/map/*
+plugins/sfCombinePlugin/lib/filter/base/*
+plugins/sfCombinePlugin/lib/form/base/*
+*~

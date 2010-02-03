@@ -1,0 +1,6 @@
+SkinnyItem:
+  first:
+    name: do the deploy
+    text: que si que no, que nunca me abandones
+    SkinnyList: deploy    
+    private: 0

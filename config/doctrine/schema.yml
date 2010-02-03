@@ -1,0 +1,16 @@
+SkinnyList:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true}
+    private: { type: boolean, notnull: true, default: 0 }
+
+SkinnyItem:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true } 
+    text: { type: string(4000) }
+    list_id: { type: integer, notnull: true }
+  relations:
+    SkinnyList: { class: SkinnyList, onDelete: CASCADE, local: list_id, foreign: id, foreignAlias: items } 
+      
+

@@ -1,0 +1,558 @@
+/* @override 
+	http://sftips.localhost/css/frontend/main.css
+	http://check.localhost/css/frontend/main.css
+*/
+
+
+/* @group Structure */
+
+body
+{
+	margin: 0;
+	padding: 20px 0 0;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #353535;
+	font-size: .75em; /* 12 px */
+	color: #fff;
+}
+body.javascriptOff #todo .ui-widget-header .check
+{
+	display: none;
+}
+a img
+{
+	border: none;
+}
+.wrapAll
+{
+	position: relative;
+	width: 58.33333em; /* 700px */
+	margin: 0 auto;
+}
+.header
+{
+	position: relative;
+	height: 240px;
+	overflow: visible;
+}
+.header h1
+{
+	float: left;
+	margin: 20px 0 0;
+	padding: 0;
+	font-size: 2em; /* 24px */
+	width: 16.6666em; /* 400px */
+	font-family: Myriad Pro, Myriad, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+.header h1 span
+{
+	white-space: nowrap;
+}
+.uiStudioLink
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+}
+.footer .uiStudioLink
+{
+	right: -10px;
+	bottom: -10px;
+}
+.headerEnd
+{
+	clear: both;
+}
+
+/* @group Admin */
+
+div.admin
+{
+	position: relative;
+	margin: 1em 0;
+	padding: 0 1em;
+	background-color: #D4DDE6;
+	border-style: solid;
+	border-width: 2px 0;
+	border-color: #4477A5;
+	color: #000;
+}
+.admin a,
+.admin a:link,
+.admin a:hover,
+.admin a:active,
+.admin a:visited
+{
+	text-decoration: none;
+	color: #516F07;
+	text-transform: lowercase;
+}
+.admin .user
+{
+	float: right;
+	margin: 1em;
+	padding: 0;
+}
+.admin .user a
+{
+	text-decoration: underline;
+}
+div.admin ul
+{
+	margin: 1em 0;
+	padding: 0;
+}
+div.admin li
+{
+	display: inline;
+	margin: 0;
+	padding: 0 2em 0 0;
+}
+.admin li a,
+.admin li a:link,
+.admin li a:hover,
+.admin li a:active,
+.admin li a:visited
+{
+	font-family: geogia, serif;
+	font-size: 150%;
+	text-transform: uppercase;
+}
+
+/* @end */
+
+
+pre
+{
+	margin: 1em 0;
+	padding: 1em;
+	background-color: #e0e0e0;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+
+
+code
+{
+	font-size: 1.223em;
+}
+pre code
+{
+	font-size: 1em;
+}
+a,
+a:link,
+a:hover,
+a:active,
+a:visited
+{
+	color: #fff;
+	text-decoration: underline;
+}
+.expressYourself
+{
+	margin: 5em 0 1em;
+	padding: 0;
+}
+.expressYourself h2
+{
+	font-weight: normal;
+}
+#sf_admin_container
+{
+	padding: 1em .5em;
+	background-color: #EFEFEF;
+	color: #444;
+}
+/* @group Footer */
+
+.footer
+{
+	margin: 3em 0;
+}
+.footer a,
+.footer a:link,
+.footer a:hover,
+.footer a:active,
+.footer a:visited
+{
+	color: #353535;
+	text-decoration: underline;
+}
+.footer a:hover
+{
+	color: #fff;
+	text-decoration: none;
+}
+.footer a.brillault,
+.footer a.brillault:link,
+.footer a.brillault:hover,
+.footer a.brillault:active,
+.footer a.brillault:visited
+{
+	color: #fff;
+}
+
+.madeBy
+{
+	margin: 0;
+	padding: .5em 1em;
+	background-color: #525252;
+	color: #353535;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+.madeBy em
+{
+	float: right;
+	font-style: normal;
+}
+.madeBy strong
+{
+	font-weight: normal;
+	color: #fff;
+}
+.madeBy strong a,
+.madeBy strong a:link,
+.madeBy strong a:hover,
+.madeBy strong a:active,
+.madeBy strong a:visited
+{
+	color: #fff;
+	text-decoration: underline;
+}
+.legals
+{
+	margin: 0;
+	padding: 1em 0;
+	color: #555;
+}
+.legals p
+{
+	margin: 0;
+	padding: 0 0 .5em;
+}
+.legals a,
+.legals a:link,
+.legals a:hover,
+.legals a:active,
+.legals a:visited
+{
+	color: #555;
+}
+
+/* @end */
+
+
+
+
+/* @end */
+
+/* @group NoScript */
+
+div.javascriptOff
+{
+	display: block;
+	margin: 3em 0;
+	padding: 1em 1em 1em 60px;
+	color: #000;
+	background-color: #E0E0E0;
+	background-image: url(/sf/sf_default/images/icons/tools48.png);
+	background-repeat: no-repeat;
+	background-position: 5px 50%;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+div.javascriptOff h1
+{
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 200%;
+}
+div.javascriptOff p
+{
+	margin: 0;
+	padding: 0;
+}
+/* @end */
+
+/* @group Form Preview */
+
+.preview
+{
+  margin: 1em 0;
+  padding: 1em;
+  background-color: #fff;
+  border: 5px solid #7BAC08;
+}
+.preview p.info
+{
+  float: right;
+  font-size: small;
+  margin: 0;
+  padding: 0;
+  color: #999;
+}
+.preview a.info
+{
+  font-size: x-small;
+}
+.preview .title
+{
+	border-bottom: 1px solid #D9D9D9;
+	color: #7BAC08;
+	text-transform: uppercase;
+	font-size: 120%;
+}
+/* @end */
+
+/* @group Tag List */
+
+.javascriptOff .tagList
+{
+	display: none;
+}
+.tagList
+{
+	text-align: right;
+	padding: 24px 0 5px;
+}
+.tagList h2
+{
+	display: inline;
+	font-weight: normal;
+	font-size: 100%;
+	color: #666;
+}
+.tagList ul
+{
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+.tagList li
+{
+	display: inline;
+	margin: 0;
+	padding: 0 5px;
+	border: 1px solid #353535;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	cursor: pointer;
+}
+.javascriptOff .tagList li
+{
+	cursor: text;
+}
+.tagList li.checked
+{
+	background-color: #DCE7FA;
+	border-color: #A1BFF3;
+	color: #000;
+}
+
+/* @end */
+
+/* @group Todo list */
+#todoAnchors
+{
+	display: block;
+	padding: 1em 0 3em;
+	font-family: georgia, serif;
+}
+#todoAnchors h2
+{
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-size: 1.9em;
+}
+#todoAnchors ul
+{
+	margin: 1em 0;
+	padding: 0;
+	color: #aaa;
+}
+#todoAnchors li
+{
+	margin: 1em 0 0 1em;
+	padding: 0;
+	font-size: 1.5em;
+}
+#todoAnchors a,
+#todoAnchors a:link,
+#todoAnchors a:hover,
+#todoAnchors a:active,
+#todoAnchors a:visited
+{
+	display: block;
+	color: #aaa;
+}
+#todoAnchors li:hover,
+#todoAnchors a:hover
+{
+	color: #fff;
+}
+#todo
+{
+	clear: both;
+	position: relative;
+	top: -3px;
+}
+#todo .thumb
+{
+	float: right;
+	margin: 0 0 1em 1em;
+	padding: 0;
+}
+.javascriptOff #todo .todo
+{
+	margin: 1em 0;
+}
+#todo .ui-widget-header
+{
+	position: relative;
+	margin-top: 3px;
+	cursor: pointer;
+	font-size: 1em;/* 15.6px */
+	padding: .5em 1em .5em 2.2em;
+	zoom: 1;
+}
+body.todoShow #todo .ui-widget-header
+{
+	padding-left: 1em;
+}
+.todoShow #todo .ui-widget-header,
+.javascriptOff #todo .ui-widget-header
+{
+	cursor: auto;
+}
+#todo .ui-widget-header .move
+{
+	display: none;
+	position: absolute;
+	right: .5em;
+	top: 50%;
+	margin-top: -8px;
+	width: 24px;
+	height: 24px;
+	background-image: url(img/move.png);
+	background-position:  50% -26px;
+	cursor: move;
+}
+#todo .ui-widget-header.ui-state-disabled .move
+{
+	background-position:  50% -2px;
+}
+#todo .ui-widget-header .title
+{
+	float: left;
+	line-height: 24px;
+}
+#todo .ui-widget-header .tags
+{
+	float: right;
+	margin: 0;
+	padding: 0;
+	height: 24px;
+	line-height: 24px;
+}
+#todo .ui-widget-header .tags li
+{
+	display: inline;
+	margin: 0;
+	padding: 0 5px;
+	list-style-type: none;
+	font-size: .7em;
+	color: #000;
+	background-color: #DCE7FA;
+	border: 1px solid #A1BFF3;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+}
+#todo .ui-widget-header .ui-widget-header-end
+{
+	clear: both;
+	display: block;
+}
+#todo .ui-widget-header:hover .move
+{
+  display: block;
+}
+#todo .ui-widget-content p.top
+{
+	float: right;
+}
+#todo .ui-widget-content p.top a:link,
+#todo .ui-widget-content p.top a:hover,
+#todo .ui-widget-content p.top a:active,
+#todo .ui-widget-content p.top a:visited
+{
+	text-decoration: none;
+}
+#todo .ui-widget-content p.top .ui-icon
+{
+	float: left;
+}
+#todo .ui-widget-header .check
+{
+	position: absolute;
+	overflow: hidden;
+	left: .5em;
+	top: 50%;
+	height: 24px;
+	width: 24px;
+	margin-top: -12px;
+	font-size: 1em;
+	background-repeat: no-repeat;
+	background-position: 50% 0;
+	background-image: url(img/checked.png);
+}
+
+#todo .ui-state-disabled .check
+{
+	background-position: 50% 100%;
+}
+#todo .ui-widget-content
+{
+	display: none;
+	padding: 1em 2.2em;
+	border-top: 0;
+	margin-top: -2px;
+	position: relative;
+	top: 1px;
+	margin-bottom: 2px;
+	overflow: auto; 
+	/*font-size: .76923em;*/ /* 12px */
+	font-size: .897em;
+}
+body.javascriptOff #todo .ui-widget-content,
+body.todoShow #todo .ui-widget-content
+{
+	display: block;
+}
+
+.permalink
+{
+
+	margin: 0 0 1em 1em;
+	padding: 0;
+	text-align: right;
+}
+.permalink a,
+.permalink a:link,
+.permalink a:hover,
+.permalink a:active,
+.permalink a:visited
+{
+	color: #66c;
+}
+.permalink a:hover
+{
+	color: #009;
+}
+/* @end */

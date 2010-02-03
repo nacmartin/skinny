@@ -1,0 +1,9 @@
+showSuccess:
+  stylesheets:
+    - jquery-ui-1.7.1/ui-studio/jquery-ui-1.7.1.custom.css
+    - /js/jquery.fancybox/jquery.fancybox.css
+
+  javascripts:
+    - jquery.fancybox/jquery.fancybox-1.2.1.pack.js
+    - frontend/main.js
+    - frontend/dashboard.js

@@ -1,0 +1,3 @@
+CREATE TABLE skinny_item (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL, text TEXT, list_id BIGINT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX list_id_idx (list_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE skinny_list (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL, private TINYINT(1) DEFAULT '0' NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+ALTER TABLE skinny_item ADD CONSTRAINT skinny_item_list_id_skinny_list_id FOREIGN KEY (list_id) REFERENCES skinny_list(id) ON DELETE CASCADE;

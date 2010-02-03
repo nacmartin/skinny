@@ -1,0 +1,3 @@
+SkinnyList:
+  deploy:
+    name: Symfony Deploy
