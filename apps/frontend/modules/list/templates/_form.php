@@ -12,14 +12,13 @@ function addItem(num) {
 }
 $().ready(function() {
   $('button#add_item').click(function() {
-    $("#extraitems").append(addItem(items));
+      $("#extraitems").append(addItem(items)).find('textarea:last-child').markedit();
     items = items + 1;
   });
 
   $('textarea').each(function(){
-    $(this).wmd();
+    $(this).markedit();
   });
-  $('#jquery.wmd.min.js').wmd();
 
 });
 </script>
@@ -34,7 +33,7 @@ $().ready(function() {
   <input type="hidden" name="sf_method" value="put" />
   <?php endif; ?>
   <?php echo $form->renderGlobalErrors();?>
-  <div><?php echo $form['_csrf_token']->render();?></div>
+  <div><?php echo $form['_csrf_token']->render();?><?php echo $form['id']->render();?></div>
   <fieldset>
     <legend>General</legend>
     <div><?php echo $form['name']->renderRow()?></div>

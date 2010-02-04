@@ -19,7 +19,8 @@ class listActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->list = Doctrine::getTable('SkinnyList')->find(array($request->getParameter('id')));
+    $this->id = $request->getParameter('id');
+    $this->list = Doctrine::getTable('SkinnyList')->find(array($this->id));
     $this->forward404Unless($this->list);
     $this->items = $this->list->items;
   }
@@ -74,7 +75,7 @@ class listActions extends sfActions
     {
       $skinny_list = $form->save();
 
-      $this->redirect('list/edit?id='.$skinny_list->getId());
+      $this->redirect('list/show?id='.$skinny_list->getId());
     }
   }
 

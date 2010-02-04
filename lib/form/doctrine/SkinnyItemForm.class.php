@@ -12,6 +12,7 @@ class SkinnyItemForm extends BaseSkinnyItemForm
 {
   public function configure()
   {
+    $this->setWidget('text', new sfWidgetFormTextarea(array(), array('style'=>'height:200px;')));
     $this->useFields(array(
       'name',
       'text',

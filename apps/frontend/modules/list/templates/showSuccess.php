@@ -7,3 +7,4 @@
     <?php include_partial('list/item',array('item' => $item, 'include_dashboard_links' => true))?>
   <?php endforeach; ?>
 </div>
+<?php echo link_to('Edit', 'list/edit?id='.$id)?>

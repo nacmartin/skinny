@@ -37,6 +37,7 @@ class SkinnyListForm extends BaseSkinnyListForm
       'name',
       'private',
       'items',
+      'id'
     ));
   }
 
