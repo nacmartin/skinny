@@ -67,59 +67,44 @@ a img
 	clear: both;
 }
 
-/* @group Admin */
+/* @group topline */
 
-div.admin
+div.topline
 {
+    float:right;
 	position: relative;
-	margin: 1em 0;
 	padding: 0 1em;
-	background-color: #D4DDE6;
-	border-style: solid;
-	border-width: 2px 0;
-	border-color: #4477A5;
-	color: #000;
+	color: #ccc;
+	font-size: 150%;
 }
-.admin a,
-.admin a:link,
-.admin a:hover,
-.admin a:active,
-.admin a:visited
+.topline a,
+.topline a:link,
+.topline a:hover,
+.topline a:active,
+.topline a:visited
 {
 	text-decoration: none;
-	color: #516F07;
+	color: #ccc;
 	text-transform: lowercase;
+    text-decoration: underline;
 }
-.admin .user
-{
-	float: right;
-	margin: 1em;
-	padding: 0;
-}
-.admin .user a
-{
-	text-decoration: underline;
-}
-div.admin ul
+div.topline ul
 {
 	margin: 1em 0;
 	padding: 0;
 }
-div.admin li
+div.topline li
 {
 	display: inline;
 	margin: 0;
 	padding: 0 2em 0 0;
 }
-.admin li a,
-.admin li a:link,
-.admin li a:hover,
-.admin li a:active,
-.admin li a:visited
+.topline li a,
+.topline li a:link,
+.topline li a:hover,
+.topline li a:active,
+.topline li a:visited
 {
-	font-family: geogia, serif;
-	font-size: 150%;
-	text-transform: uppercase;
 }
 
 /* @end */
@@ -245,8 +230,6 @@ a:visited
 }
 
 /* @end */
-
-
 
 
 /* @end */
