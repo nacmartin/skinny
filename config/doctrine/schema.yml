@@ -3,6 +3,12 @@ SkinnyList:
   columns:
     name: { type: string(255), notnull: true}
     private: { type: boolean, notnull: true, default: 0 }
+    user_id: { type: integer(4)}
+  relations:
+    sfGuardUser: 
+      local: user_id
+      onDelete: CASCADE
+      foreignAlias: lists
 
 SkinnyItem:
   actAs: { Timestampable: ~ }

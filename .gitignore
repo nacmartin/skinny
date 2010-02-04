@@ -5,6 +5,9 @@ web/uploads/*
 *.svn*
 lib/model/om/*
 lib/model/map/*
+lib/filter/doctrine/base/*
+lib/model/doctrine/base/*
+lib/form/doctrine/base/*
 plugins/sfGuardPlugin/lib/model/om/*
 plugins/sfGuardPlugin/lib/model/map/*
 plugins/sfGuardPlugin/lib/form/base/*
