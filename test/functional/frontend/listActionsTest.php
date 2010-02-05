@@ -33,7 +33,7 @@ $browser->
     checkElement('a:contains("Edit")', false)->
   end()->
   info('1.2 - Authenticated and owner has link to edit')->
-  signinOk(array('username'=>'admin','password'=>'admin'))->
+  signinOk(array('username'=>'nacho','password'=>'nacho'))->
   get('/list')->
   click('View', array(), array('position' => 1))->
   with('request')->begin()->
@@ -44,16 +44,17 @@ $browser->
     isStatusCode(200)->
     checkElement('a:contains("Edit")', true)->
   end()->
-  info('1.3 - Authenticated but no owner has not link to edit')->
+  info('1.3 - Authenticated and owner has link to edit')->
+  click('Edit', array(), array('position' => 1))->
+  with('request')->begin()->
+    isParameter('module', 'list')->
+    isParameter('action', 'edit')->
+  end()->
+  info('1.4 - Authenticated but no owner has not link to edit')->
   logoutOk()->
-  signinOk(array('username'=>'nacho','password'=>'nacho'))->
+  signinOk(array('username'=>'vito','password'=>'vito'))->
   get('/list')->
   click('View', array(), array('position' => 1))->
   with('response')->begin()->
     checkElement('a:contains("Edit")', false)->
-  end();
-
-  
-
-
-
+  end(); 

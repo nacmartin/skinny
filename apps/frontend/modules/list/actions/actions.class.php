@@ -10,6 +10,25 @@
  */
 class listActions extends sfActions
 {
+  //hijack to add an owner credential
+  public function getCredential()
+  {
+    $list = $this->retrieveSkinnyList();
+    if ($list && $this->getUser()->isOwnerOf($list)){
+      $this->getUser()->addCredential('owner');
+    }else{
+      $this->getUser()->removeCredential('owner');
+    }
+    // the hijack is over, let the normal flow continue:
+    return parent::getCredential();
+  }
+
+  protected function retrieveSkinnyList(){
+    if($id = $this->getRequest()->getParameter('id'));
+    $list = Doctrine::getTable('SkinnyList')->find(array($id));
+    return $list;
+  }
+
   public function executeIndex(sfWebRequest $request)
   {
     $this->skinny_lists = Doctrine::getTable('SkinnyList')

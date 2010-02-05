@@ -9,6 +9,11 @@ sfGuardUser:
     password:       nacho
     is_super_admin: false
 
+  vito:
+    username:       vito
+    password:       vito
+    is_super_admin: false
+
 sfGuardPermission:
   sgp_admin:
     name:           admin
