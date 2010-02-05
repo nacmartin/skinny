@@ -12,4 +12,11 @@
  */
 class SkinnyList extends BaseSkinnyList
 {
+  public function isOwner($user = null)
+  {
+    if (!isset($user) || !$user->getGuardUser()){
+      return false;
+    }
+    return ($this->getUserId() == $user->getGuardUser()->getId()) ? true : false;
+  }
 }

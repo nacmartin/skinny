@@ -2,3 +2,4 @@ SkinnyList:
   deploy:
     name: Symfony Deploy
     private: 0
+    sfGuardUser: sgu_admin
