@@ -15,7 +15,14 @@
       <td><?php echo $skinny_list->getName() ?></td>
       <td><?php echo $skinny_list->getCreatedAt() ?></td>
       <td><?php echo $skinny_list->getUpdatedAt() ?></td>
-      <td><?php echo link_to("View","list/show?id=".$skinny_list->getid()) ?></a></td>
+      <td><?php echo link_to("View", 'list_permalink', $skinny_list, 
+                            array(
+                              'name' => url_for(
+                                array(
+                                  'sf_route'   => 'list_permalink', 
+                                  'sf_subject' => $skinny_list), 
+                                true
+                              ))) ?></a></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
