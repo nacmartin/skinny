@@ -8,5 +8,5 @@
   <?php endforeach; ?>
 </div>
 <?php if ($sf_user->isOwnerOf($list)): ?>
-  <?php echo link_to('Edit', 'list/edit?id='.$id, array('class'=>"crud"))?>
+  <?php echo link_to('Edit', 'list/edit?id='.$list->id, array('class'=>"crud"))?>
 <?php endif?>

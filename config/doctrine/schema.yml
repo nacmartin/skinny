@@ -1,5 +1,11 @@
 SkinnyList:
-  actAs: { Timestampable: ~ }
+  actAs:  
+    Timestampable: ~ 
+    Sluggable:
+      fields: [name]
+      indexName: namer_slug
+      canUpdate: true
+      unique: true
   columns:
     name: { type: string(255), notnull: true}
     private: { type: boolean, notnull: true, default: 0 }
@@ -11,7 +17,13 @@ SkinnyList:
       foreignAlias: lists
 
 SkinnyItem:
-  actAs: { Timestampable: ~ }
+  actAs: 
+    Timestampable: ~ 
+    Sluggable:
+      fields: [name]
+      indexName: namer_slug
+      canUpdate: true
+      unique: true
   columns:
     name: { type: string(255), notnull: true } 
     text: { type: string(4000) }

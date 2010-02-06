@@ -38,8 +38,7 @@ class listActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->id = $request->getParameter('id');
-    $this->list = Doctrine::getTable('SkinnyList')->find(array($this->id));
+    $this->list = $this->getRoute()->getObject();
     $this->forward404Unless($this->list);
     $this->items = $this->list->items;
   }
