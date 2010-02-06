@@ -17,3 +17,7 @@ plugins/sfCombinePlugin/lib/model/map/*
 plugins/sfCombinePlugin/lib/filter/base/*
 plugins/sfCombinePlugin/lib/form/base/*
 *~
+.buildpath
+.project
+.settings
+
