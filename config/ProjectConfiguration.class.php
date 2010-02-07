@@ -10,4 +10,13 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins('sfDoctrinePlugin');
     $this->enablePlugins('sfDoctrineGuardPlugin');
   }
+
+  /**
+  * Configure the Doctrine engine
+  **/
+  public function configureDoctrine(Doctrine_Manager $manager)
+  {
+    $manager->setAttribute(Doctrine::ATTR_QUERY_CACHE, new Doctrine_Cache_Apc());
+  }
+
 }
