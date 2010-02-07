@@ -7,7 +7,7 @@ Doctrine::loadData(sfConfig::get('sf_test_dir').'/fixtures');
 
 $browser->
   info('0 - General')->
-  get('/list/index')->
+  get('/')->
 
   with('request')->begin()->
     isParameter('module', 'list')->
@@ -22,7 +22,7 @@ $browser->
 $browser->
   info('1 - User owning')->
   info('1.1 - Not authenticated haven\'t edit link')->
-  get('/list')->
+  get('/')->
   click('View', array(), array('position' => 1))->
   with('request')->begin()->
     isParameter('module', 'list')->
@@ -34,7 +34,7 @@ $browser->
   end()->
   info('1.2 - Authenticated and owner has link to edit')->
   signinOk(array('username'=>'nacho','password'=>'nacho'))->
-  get('/list')->
+  get('/')->
   click('View', array(), array('position' => 1))->
   with('request')->begin()->
     isParameter('module', 'list')->
@@ -53,7 +53,7 @@ $browser->
   info('1.4 - Authenticated but no owner has not link to edit')->
   logoutOk()->
   signinOk(array('username'=>'vito','password'=>'vito'))->
-  get('/list')->
+  get('/')->
   click('View', array(), array('position' => 1))->
   with('response')->begin()->
     checkElement('a:contains("Edit")', false)->
