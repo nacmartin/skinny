@@ -17,3 +17,6 @@ list:
     prefix_path:          list
     with_wildcard_routes: true
 
+sorted_list:
+  url:     /list/sort
+  param:   { module: list, action: sort }

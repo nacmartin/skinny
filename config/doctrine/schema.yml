@@ -21,9 +21,15 @@ SkinnyItem:
     Timestampable: ~ 
     Sluggable:
       fields: [name]
-      indexName: namer_slug
+      indexName: name_slug
       canUpdate: true
       unique: true
+    Sortable:
+      type:      integer
+      length:    1
+      indexName: item_sortable
+      options:
+        unsigned: true
   columns:
     name: { type: string(255), notnull: true } 
     text: { type: string(4000) }

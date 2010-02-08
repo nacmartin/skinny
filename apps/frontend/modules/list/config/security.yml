@@ -1,3 +1,6 @@
 edit:
   is_secure: on
   credentials: [[admistrator owner]]
+sort:
+  is_secure: on
+  credentials: [[admistrator owner]]

@@ -3,3 +3,8 @@ SkinnyItem:
     name: do the deploy
     text: <p>Ahoy</p>
     SkinnyList: deploy    
+
+  secont:
+    name: Sleep
+    text: Zzzzz
+    SkinnyList: deploy    

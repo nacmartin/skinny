@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
   var toggleTodo = function(){
-    var header = $(this).hasClass("ui-widget-header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
+    var header = $(this).hasClass("icon") ? $(this).parent() : $(this).closest(".todo").find(".ui-widget-header:first");
     var todo = header.closest(".todo");
     var content = header.next();
     if (!header.hasClass("ui-state-active"))
@@ -11,9 +11,9 @@ $(document).ready(function()
         .removeClass("ui-corner-all ui-state-default")
         .addClass("ui-state-active ui-corner-top")
         ;
-      $(".ui-icon", header)
-        .removeClass("ui-icon-triangle-1-w")
-        .addClass("ui-icon-triangle-1-s")
+      $(".icon", header)
+        .removeClass("icon-triangle-e")
+        .addClass("icon-triangle-s")
         ;
       content
         .slideDown("fast")
@@ -27,9 +27,9 @@ $(document).ready(function()
         .removeClass("ui-state-active ui-corner-top")
         .addClass("ui-corner-all ui-state-default")
         ;
-      $(".ui-icon", header)
-        .removeClass("ui-icon-triangle-1-s")
-        .addClass("ui-icon-triangle-1-w")
+      $(".icon", header)
+        .removeClass("icon-triangle-s")
+        .addClass("icon-triangle-e")
         ;
       content
         .slideUp("fast")
@@ -39,9 +39,9 @@ $(document).ready(function()
     return false;
   };
 
-  $("#todo .ui-widget-header")
+  $("#todo .icon")
     .bind("click", toggleTodo)
-    .hover(
+    .parent().hover(
       function(){
         if (!$(this).hasClass("ui-state-disabled"))
         {
@@ -71,10 +71,7 @@ $(document).ready(function()
       return false;
     })
     ;
-  $("#todo .top a")
-    .click(toggleTodo)
-    .find(".txt").text("close")
-    ;
+  $(".top a").click(toggleTodo).find(".txt").text("close");
   $(".tagList li:first").addClass("checked");
   $(".tagList li").click(function(){
     $(".tagList li").removeClass("checked");

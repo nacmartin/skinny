@@ -40,7 +40,7 @@ class listActions extends sfActions
   {
     $this->list = $this->getRoute()->getObject();
     $this->forward404Unless($this->list);
-    $this->items = $this->list->items;
+    $this->items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id','ASCENDING');
   }
 
   public function executeNew(sfWebRequest $request)
@@ -95,6 +95,21 @@ class listActions extends sfActions
 
       $this->redirect('list/show?id='.$skinny_list->getId());
     }
+  }
+
+  public function executeSort($request)
+  {
+    $this->forward404Unless($request->isXmlHttpRequest());
+    $jsarray = $request->getParameter("sortarr");
+    $obj = json_decode($jsarray); 
+    $pos = 1;
+    foreach ($obj as $item_id){
+      $item = Doctrine::getTable('SkinnyItem')->find(substr($item_id,-1));
+      $item->moveToPosition($pos);
+      $item->save();
+      $pos++;
+    }
+    return sfView::NONE;
   }
 
   public function executeAddSkinnyItemForm($request)

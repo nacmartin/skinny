@@ -1,9 +1,10 @@
-<div class="todo" id="todo<?php echo $item->id?>">
+<li class="todo" id="todo<?php echo $item->id?>">
   <div class="ui-widget-header ui-helper-reset ui-corner-all ui-state-default">
     <span class="title"><?php echo $item ?></span>
-      <?php if (isset($include_dashboard_links) && true === $include_dashboard_links): ?>
-        <span class="check"></span>
-      <?php endif ?>
+    <?php if (isset($include_dashboard_links) && true === $include_dashboard_links): ?>
+      <span class="check"></span>
+    <?php endif ?>
+    <div class="icon icon-triangle-e"></div>
     <span class="ui-widget-header-end"/> 
   </div>
   <div class="ui-widget-content ui-helper-reset ui-corner-bottom">
@@ -24,4 +25,4 @@
       <p class = "top"><a href="#todoAnchors"><span class="ui-icon ui-icon-carat-1-n"></span><span class="txt">top</span></a></p>
     <?php endif?>
   </div>
-</div>
+</li>
