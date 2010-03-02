@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
   var toggleTodo = function(){
-    var header = $(this).hasClass("icon") ? $(this).parent() : $(this).closest(".todo").find(".ui-widget-header:first");
+    var header = $(this).hasClass(".ui-widget-header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
     var todo = header.closest(".todo");
     var content = header.next();
     if (!header.hasClass("ui-state-active"))
@@ -10,10 +10,6 @@ $(document).ready(function()
       header
         .removeClass("ui-corner-all ui-state-default")
         .addClass("ui-state-active ui-corner-top")
-        ;
-      $(".icon", header)
-        .removeClass("icon-triangle-e")
-        .addClass("icon-triangle-s")
         ;
       content
         .slideDown("fast")
@@ -27,10 +23,6 @@ $(document).ready(function()
         .removeClass("ui-state-active ui-corner-top")
         .addClass("ui-corner-all ui-state-default")
         ;
-      $(".icon", header)
-        .removeClass("icon-triangle-s")
-        .addClass("icon-triangle-e")
-        ;
       content
         .slideUp("fast")
         ;
@@ -39,9 +31,9 @@ $(document).ready(function()
     return false;
   };
 
-  $("#todo .icon")
+  $(".ui-widget-header")
     .bind("click", toggleTodo)
-    .parent().hover(
+    .hover(
       function(){
         if (!$(this).hasClass("ui-state-disabled"))
         {

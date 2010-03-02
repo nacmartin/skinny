@@ -383,6 +383,7 @@ div.javascriptOff p
 	font-size: 1em;/* 15.6px */
 	padding: .5em 1em .5em 2.2em;
 	zoom: 1;
+    width: 620px;
 }
 body.todoShow #todo .ui-widget-header
 {
@@ -483,6 +484,7 @@ body.todoShow #todo .ui-widget-header
 {
 	display: none;
 	padding: 1em 2.2em;
+    width: 608px;
 	border-top: 0;
 	margin-top: -2px;
 	position: relative;
@@ -556,18 +558,21 @@ fieldset {
     font-weight: bold;
 }
 
-.icon {
+.icon-drag {
     height: 13px;
     width: 13px;
-    float: left;
-    margin-left: 10px;
-    margin-top: 5px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
 }
 
-.icon-triangle-e {
-    background-image: url(images/todo_collapsed.png);
-}
-
-.icon-triangle-s {
-    background-image: url(images/todo_expanded.png);
+.ui-state-highlight {
+    height: 1.5em;
+    width: 620px;
+    margin-top: 3px;
+	padding: .5em 1em .5em 2.2em;
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
 }
