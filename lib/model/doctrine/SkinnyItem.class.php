@@ -19,8 +19,7 @@ class SkinnyItem extends BaseSkinnyItem
   public function getContentHtml()
   {
     require_once(sfConfig::get('sf_lib_dir').'/vendor/markdown.php');
-
-    return Markdown($this->text);
+    return Markdown(htmlspecialchars($this->text));
   }
 
 }
