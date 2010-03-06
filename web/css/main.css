@@ -263,53 +263,6 @@ div.javascriptOff p
 }
 /* @end */
 
-/* @group Tag List */
-
-.javascriptOff .tagList
-{
-	display: none;
-}
-.tagList
-{
-	text-align: right;
-	padding: 24px 0 5px;
-}
-.tagList h2
-{
-	display: inline;
-	font-weight: normal;
-	font-size: 100%;
-	color: #666;
-}
-.tagList ul
-{
-	display: inline;
-	margin: 0;
-	padding: 0;
-}
-.tagList li
-{
-	display: inline;
-	margin: 0;
-	padding: 0 5px;
-	border: 1px solid #353535;
-	-webkit-border-radius: .5em;
-	-moz-border-radius: .5em;
-	cursor: pointer;
-}
-.javascriptOff .tagList li
-{
-	cursor: text;
-}
-.tagList li.checked
-{
-	background-color: #DCE7FA;
-	border-color: #A1BFF3;
-	color: #000;
-}
-
-/* @end */
-
 /* @group Todo list */
 #todoAnchors
 {
@@ -584,4 +537,12 @@ fieldset {
 
 .markedit textarea {
     width: 600px;
+}
+
+#title {
+    float: right;
+    margin-right: 40px !important;
+    margin-right: 20px;
+    font-size: 1.1em;
+    clear:both;
 }

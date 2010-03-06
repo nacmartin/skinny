@@ -21,6 +21,7 @@
     </div>
 
     <div class="wrapAll">
+      <?php echo image_tag('listandcheck.png')?>
       <?php echo $sf_content ?>
     </div>
   </body>

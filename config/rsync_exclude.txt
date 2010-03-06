@@ -3,6 +3,8 @@
 /log/*
 /web/*_dev.php
 /web/uploads/*
+/config/databases.yml
+/data/sql/schema.sql
 
 # SCM files
 .arch-params

@@ -73,10 +73,7 @@ function showEdit(item){
 <?php endif?>
 
 
-<div class="tagList">
-</div>
-
-<h2><?php echo $list->name?></h2>
+<div id="title"><h1><?php echo $list->name?></h1></div>
 <ul id="todo" class="ui-widget ui-helper-reset">
   <?php foreach ($rows as $row): ?>
     <?php include_partial('list/item',array('item' => $row['item'], 'include_dashboard_links' => true, 'owner' => $owner, 'form' => $row['form']))?>
