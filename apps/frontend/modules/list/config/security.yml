@@ -10,3 +10,6 @@ addSkinnyItem:
 updateSkinnyItem:
   is_secure: on
   credentials: [[admistrator owner]]
+deleteSkinnyItem:
+  is_secure: on
+  credentials: [[admistrator owner]]
