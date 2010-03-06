@@ -21,7 +21,7 @@
     </div>
 
     <div class="wrapAll">
-      <?php echo image_tag('listandcheck.png')?>
+      <?php echo link_to(image_tag('listandcheck.png'), '@homepage')?>
       <?php echo $sf_content ?>
     </div>
   </body>
