@@ -99,5 +99,5 @@ function showEdit(item){
 <div id="foot-show">
 <?php if ($owner): ?>
 <button id="add_item" type="button"><?php echo "Add item"?></button>
-<?php echo link_to('Print', "list/print?id=$list->id")?>
 <?php endif?>
+<?php echo link_to('Print', "list/print?id=$list->id")?>
