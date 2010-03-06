@@ -40,41 +40,19 @@ class listActions extends sfActions
   {
     $this->list = $this->getRoute()->getObject();
     $this->forward404Unless($this->list);
-    $this->items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id','ASCENDING');
+    $items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id', 'ASCENDING');
+    $this->rows = array();
+    foreach ($items as $key => $item){
+      $this->rows[$key] = array( 
+        'item' => $item, 
+        'form' => new SkinnyItemForm($item) );
+    }
     $this->owner = $this->getUser()->isOwnerOf($this->list);
   }
 
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new SkinnyListForm();
-  }
-
-  public function executeCreate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST));
-
-    $this->form = new SkinnyListForm();
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('new');
-  }
-
-  public function executeEdit(sfWebRequest $request)
-  {
-    $this->forward404Unless($skinny_list = Doctrine::getTable('SkinnyList')->find(array($request->getParameter('id'))), sprintf('Object skinny_list does not exist (%s).', $request->getParameter('id')));
-    $this->form = new SkinnyListForm($skinny_list);
-  }
-
-  public function executeUpdate(sfWebRequest $request)
-  {
-    $this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
-    $this->forward404Unless($skinny_list = Doctrine::getTable('SkinnyList')->find(array($request->getParameter('id'))), sprintf('Object skinny_list does not exist (%s).', $request->getParameter('id')));
-    $this->form = new SkinnyListForm($skinny_list);
-
-    $this->processForm($request, $this->form);
-
-    $this->setTemplate('edit');
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -85,17 +63,6 @@ class listActions extends sfActions
     $skinny_list->delete();
 
     $this->redirect('list/index');
-  }
-
-  protected function processForm(sfWebRequest $request, sfForm $form)
-  {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid())
-    {
-      $skinny_list = $form->save();
-
-      $this->redirect('list/show?id='.$skinny_list->getId());
-    }
   }
 
   public function executeSort($request)
@@ -113,20 +80,30 @@ class listActions extends sfActions
     return sfView::NONE;
   }
 
-  public function executeAddSkinnyItemForm($request)
+  public function executeUpdateSkinnyItem($request)
+  {
+    $item = Doctrine::getTable('Skinnyitem')->find(array($request->getParameter('item_id')));
+    //Security check
+    $this->forward404unless($item->list_id == $request->getParameter('id'));
+    $form = new SkinnyItemForm($item);
+    $form->bind($request->getParameter($form->getName()));
+    if($form->isValid()){
+      $item = $form->save();
+    }
+    return $this->renderPartial('item', array('item' => $item, 'include_dashboard_links' => true, 'form' => $form, 'owner' => true));
+  }
+
+  public function executeAddSkinnyItem($request)
   {
     $this->forward404unless($request->isXmlHttpRequest());
-    $number = intval($request->getParameter("num"));
 
-    if($list = Doctrine::getTable('SkinnyList')->find($request->getParameter('id'))){
-      $form = new SkinnyListForm($list);
-    }else{
-      $form = new SkinnyListForm(null);
-    }
+    $item = new SkinnyItem();
+    $item->list_id = $request->getParameter('id');
+    $item->moveToLast();
+    $item->save();
+    $form = new SkinnyItemForm($item);
 
-    $form->addSkinnyItem($number);
-
-    return $this->renderPartial('addItem',array('form' => $form, 'num' => $number));
+    return $this->renderPartial('item', array('item' => $item, 'include_dashboard_links' => true, 'form' => $form, 'owner' => true));
   }
 
 }

@@ -9,14 +9,22 @@ list_permalink:
   param:        { module: list, action: show }
   requirements: { sf_method: get }
 
-list:
-  class: sfDoctrineRouteCollection
-  options: 
-    model:                SkinnyList
-    module:               list
-    prefix_path:          list
-    with_wildcard_routes: true
+#list:
+#  class: sfDoctrineRouteCollection
+#  options: 
+#    model:                SkinnyList
+#    module:               list
+#    prefix_path:          list
+#    with_wildcard_routes: true
 
 sorted_list:
   url:     /list/sort
   param:   { module: list, action: sort }
+
+add_item:
+  url:     /list/addItem/*
+  param:   { module: list, action: addSkinnyItem }
+
+update_item:
+  url:     /list/updateItem/*
+  param:   { module: list, action: updateSkinnyItem }

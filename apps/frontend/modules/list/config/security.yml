@@ -4,3 +4,9 @@ edit:
 sort:
   is_secure: on
   credentials: [[admistrator owner]]
+addSkinnyItem:
+  is_secure: on
+  credentials: [[admistrator owner]]
+updateSkinnyItem:
+  is_secure: on
+  credentials: [[admistrator owner]]

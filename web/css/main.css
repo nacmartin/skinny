@@ -361,10 +361,6 @@ div.javascriptOff p
     padding: 0; 
 }
 
-#todo li{
-    cursor: move;
-}
-
 #todo .thumb
 {
 	float: right;
@@ -379,12 +375,18 @@ div.javascriptOff p
 {
 	position: relative;
 	margin-top: 3px;
-	cursor: pointer;
 	font-size: 1em;/* 15.6px */
 	padding: .5em 1em .5em 2.2em;
 	zoom: 1;
-    width: 620px;
+    width: 610px;
 }
+
+.item-header
+{
+	cursor: pointer;
+    min-height: 25px;
+}
+
 body.todoShow #todo .ui-widget-header
 {
 	padding-left: 1em;
@@ -484,7 +486,7 @@ body.todoShow #todo .ui-widget-header
 {
 	display: none;
 	padding: 1em 2.2em;
-    width: 608px;
+    width: 598px;
 	border-top: 0;
 	margin-top: -2px;
 	position: relative;
@@ -559,20 +561,27 @@ fieldset {
 }
 
 .icon-drag {
-    height: 13px;
-    width: 13px;
     float: right;
-    margin-right: 10px;
     margin-top: 10px;
+    cursor: move;
+}
+.icon-edit {
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .ui-state-highlight {
     height: 1.5em;
-    width: 620px;
+    width: 610px;
     margin-top: 3px;
 	padding: .5em 1em .5em 2.2em;
     -moz-border-radius-bottomleft:4px;
     -moz-border-radius-bottomright:4px;
     -moz-border-radius-topleft:4px;
     -moz-border-radius-topright:4px;
+}
+
+.markedit textarea {
+    width: 600px;
 }

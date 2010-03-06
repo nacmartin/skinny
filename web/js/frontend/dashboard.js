@@ -1,7 +1,7 @@
 $(document).ready(function()
 {
   var toggleTodo = function(){
-    var header = $(this).hasClass(".ui-widget-header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
+    var header = $(this).hasClass(".header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
     var todo = header.closest(".todo");
     var content = header.next();
     if (!header.hasClass("ui-state-active"))
@@ -31,23 +31,20 @@ $(document).ready(function()
     return false;
   };
 
-  $(".ui-widget-header")
-    .bind("click", toggleTodo)
-    .hover(
-      function(){
+  $(".item-header").live("click", toggleTodo);
+  $(".item-header").live("mouseover", function(){
         if (!$(this).hasClass("ui-state-disabled"))
         {
           $(this).addClass("ui-state-hover");
         }
-      },
-      function(){
-        $(this).removeClass("ui-state-hover");
-      }
-    )
-    ;
+      });
 
-  $("#todo .ui-widget-header .check")
-    .click(function(){
+  $(".item-header").live("mouseout", function(){
+        $(this).removeClass("ui-state-hover");
+      });
+
+  $("#todo .item-header .check")
+    .live('click',function(){
       var header = $(this).closest(".ui-widget-header");
       var content = header.next();
       if (header.hasClass("ui-state-disabled"))

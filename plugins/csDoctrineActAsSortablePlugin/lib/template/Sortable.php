@@ -350,7 +350,7 @@ class Doctrine_Template_Sortable extends Doctrine_Template
    }
     
    $last = $q->fetchOne();
-   $finalPosition = $last ? $last->get($this->_options['name']) : 0;
+   $finalPosition = $last ? $last->get($this->_options['name']) + 1 : 0;
    
    return $finalPosition;
   }

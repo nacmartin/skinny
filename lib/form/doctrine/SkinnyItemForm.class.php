@@ -18,5 +18,8 @@ class SkinnyItemForm extends BaseSkinnyItemForm
       'name',
       'text',
     ));
+    //anyways we check if the owner is the one editing
+    //and CSRF is responsible of a bug if you reorder items while editing
+    $this->disableCSRFProtection();
   }
 }

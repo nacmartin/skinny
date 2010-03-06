@@ -31,7 +31,7 @@ SkinnyItem:
       options:
         unsigned: true
   columns:
-    name: { type: string(255), notnull: true } 
+    name: { type: string(255) } 
     text: { type: string(4000) }
     list_id: { type: integer, notnull: true }
   relations:
