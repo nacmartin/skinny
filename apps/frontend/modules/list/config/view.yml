@@ -8,3 +8,8 @@ showSuccess:
     - frontend/main.js
     - frontend/dashboard.js
     - jquery.json-2.2.min.js 
+
+printSuccess:
+  layout: print
+  stylesheets:
+    - print.css

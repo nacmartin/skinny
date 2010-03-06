@@ -1,0 +1,11 @@
+.print-title {
+    border-bottom: solid 1px black;
+}
+
+.print-content {
+    margin-left: 30px;
+}
+
+.print-title img {
+    margin-top: 5px;
+}

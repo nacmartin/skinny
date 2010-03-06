@@ -15,6 +15,14 @@ body
 	font-size: .75em; /* 12 px */
 	color: #fff;
 }
+
+#printbody
+{
+	background-color: #fff;
+    color: #000;
+
+}
+
 body.javascriptOff #todo .ui-widget-header .check
 {
 	display: none;

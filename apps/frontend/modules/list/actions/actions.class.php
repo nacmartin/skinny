@@ -50,6 +50,15 @@ class listActions extends sfActions
     $this->owner = $this->getUser()->isOwnerOf($this->list);
   }
 
+  public function executePrint(sfWebRequest $request)
+  {
+      $this->list = $this->retrieveSkinnyList();
+      $this->forward404Unless($this->list);
+      $this->items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id', 'ASCENDING');
+  }
+
+
+
   public function executeNew(sfWebRequest $request)
   {
     $this->form = new SkinnyListForm();
