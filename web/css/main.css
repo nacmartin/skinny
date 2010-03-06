@@ -331,7 +331,7 @@ div.javascriptOff p
 	font-size: 1em;/* 15.6px */
 	padding: .5em 1em .5em 2.2em;
 	zoom: 1;
-    width: 610px;
+    width: 595px;
 }
 
 .item-header
@@ -439,7 +439,7 @@ body.todoShow #todo .ui-widget-header
 {
 	display: none;
 	padding: 1em 2.2em;
-    width: 598px;
+    width: 583px;
 	border-top: 0;
 	margin-top: -2px;
 	position: relative;
@@ -523,20 +523,21 @@ fieldset {
     margin-top: 10px;
     cursor: pointer;
 }
+.icon-delete {
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+}
 
 .ui-state-highlight {
     height: 1.5em;
-    width: 610px;
+    width: 595px;
     margin-top: 3px;
 	padding: .5em 1em .5em 2.2em;
     -moz-border-radius-bottomleft:4px;
     -moz-border-radius-bottomright:4px;
     -moz-border-radius-topleft:4px;
     -moz-border-radius-topright:4px;
-}
-
-.markedit textarea {
-    width: 600px;
 }
 
 #title {

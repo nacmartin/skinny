@@ -28,3 +28,7 @@ add_item:
 update_item:
   url:     /list/updateItem/*
   param:   { module: list, action: updateSkinnyItem }
+
+delete_item:
+  url:     /list/deleteItem/*
+  param:   { module: list, action: deleteSkinnyItem }

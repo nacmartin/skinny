@@ -48,6 +48,23 @@ $(function() {
     showEdit($(this).parent().parent());
   });
 
+  $('.icon-delete').live('click',function(){
+    id = $(this).parent().parent().attr('id');
+    item_id = id.substring(5);
+    var r = $.ajax({
+      type: 'GET',
+      url: '<?php echo url_for('list/deleteSkinnyItem')."?id=$list->id"."&item_id="?>'+item_id,
+      async: false,
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+          alert('There is a problem with the connection. Please, retry in some time.');
+        },
+      success: function(data){
+        $('#'+id).remove();
+      }
+    }).responseText;
+    return r;
+  });
+
   $('textarea').each(function(){
     $(this).markedit();
   });

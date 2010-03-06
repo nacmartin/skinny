@@ -72,11 +72,20 @@ class listActions extends sfActions
     $obj = json_decode($jsarray); 
     $pos = 1;
     foreach ($obj as $item_id){
-      $item = Doctrine::getTable('SkinnyItem')->find(substr($item_id,-1));
+      $item = Doctrine::getTable('SkinnyItem')->find(substr($item_id,5));
       $item->moveToPosition($pos);
       $item->save();
       $pos++;
     }
+    return sfView::NONE;
+  }
+  
+  public function executeDeleteSkinnyItem($request)
+  {
+    $item = Doctrine::getTable('Skinnyitem')->find(array($request->getParameter('item_id')));
+    //Security check
+    $this->forward404unless($item->list_id == $request->getParameter('id'));
+    $item->delete();
     return sfView::NONE;
   }
 

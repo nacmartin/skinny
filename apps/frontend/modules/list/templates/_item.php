@@ -1,6 +1,7 @@
 <li class="todo" id="todo-<?php echo $item->id?>">
   <div class = "todo-show">
     <?php if ($owner):?>
+      <div class="ui-icon ui-icon-closethick icon-delete"></div>
       <div class="ui-icon ui-icon-arrowthick-2-n-s icon-drag"></div>
       <div class="ui-icon ui-icon-pencil icon-edit"></div>
     <?php endif?>
