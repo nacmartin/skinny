@@ -13,6 +13,7 @@ test:
     class: sfSessionTestStorage
     param:
       session_path: %SF_TEST_CACHE_DIR%/sessions
+      session_name: listandcheck
 
   response:
     class: sfWebResponse
