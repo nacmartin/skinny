@@ -38,4 +38,5 @@ all:
     login_action:           signin
     secure_module:          sfGuardAuth
     secure_action:          secure
+    check_lock:             true
 
