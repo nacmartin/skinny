@@ -5,5 +5,5 @@
 You may have clicked on an expired link, or the address was mistyped.
 </p>
 <p><a href="#" onClick="history.back(); return false;">Back to previous page</a></p>
-<p><?php echo link_to('Check&list home page', '@homepage')?></p>
+<p><?php echo link_to('list&check home page', '@homepage')?></p>
 </center>
