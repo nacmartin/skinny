@@ -2,7 +2,6 @@
 <script type="text/javascript">
 $(function() {
   $("#todo").sortable({ opacity: 0.6, handle: '.icon-drag', placeholder: 'ui-state-highlight' });
-  $("#todo").disableSelection();
   $('#todo').bind('sortupdate', function(event, ui) {
     var result = $('#todo').sortable('toArray');
     $.ajax({
