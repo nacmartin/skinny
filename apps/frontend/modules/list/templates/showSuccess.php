@@ -49,6 +49,8 @@ $(function() {
   });
 
   $('.icon-delete').live('click',function(){
+    var agree=confirm("Are you sure you want to delete?");
+    if (!agree) return;
     id = $(this).parent().parent().attr('id');
     item_id = id.substring(5);
     var r = $.ajax({
