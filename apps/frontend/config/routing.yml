@@ -36,3 +36,7 @@ delete_item:
 print:
   url:     /list/print/*
   param:   { module: list, action: print }
+
+register: 
+  url:     /user/register
+  param:   { module: sfGuardAuth, action: register }

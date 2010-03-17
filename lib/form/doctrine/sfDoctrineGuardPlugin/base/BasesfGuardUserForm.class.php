@@ -23,6 +23,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'is_active'        => new sfWidgetFormInputCheckbox(),
       'is_super_admin'   => new sfWidgetFormInputCheckbox(),
       'last_login'       => new sfWidgetFormDateTime(),
+      'email'            => new sfWidgetFormInputText(),
       'created_at'       => new sfWidgetFormDateTime(),
       'updated_at'       => new sfWidgetFormDateTime(),
       'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
@@ -38,6 +39,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'is_active'        => new sfValidatorBoolean(array('required' => false)),
       'is_super_admin'   => new sfValidatorBoolean(array('required' => false)),
       'last_login'       => new sfValidatorDateTime(array('required' => false)),
+      'email'            => new sfValidatorString(array('max_length' => 128)),
       'created_at'       => new sfValidatorDateTime(),
       'updated_at'       => new sfValidatorDateTime(),
       'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
@@ -45,7 +47,10 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
     ));
 
     $this->validatorSchema->setPostValidator(
-      new sfValidatorDoctrineUnique(array('model' => 'sfGuardUser', 'column' => array('username')))
+      new sfValidatorAnd(array(
+        new sfValidatorDoctrineUnique(array('model' => 'sfGuardUser', 'column' => array('username'))),
+        new sfValidatorDoctrineUnique(array('model' => 'sfGuardUser', 'column' => array('email'))),
+      ))
     );
 
     $this->widgetSchema->setNameFormat('sf_guard_user[%s]');

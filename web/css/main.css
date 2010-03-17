@@ -23,6 +23,10 @@ body
 
 }
 
+.content{
+    clear:both;
+}
+
 body.javascriptOff #todo .ui-widget-header .check
 {
 	display: none;
@@ -500,7 +504,7 @@ button {
 }
 
 legend {
-    font-size: 4em; 
+    font-size: 2em; 
 }
 
 label {
@@ -510,6 +514,7 @@ label {
 
 fieldset {
     padding: 20px;
+    margin: 10px;
 }
 
 .formitem {
@@ -555,3 +560,20 @@ fieldset {
     font-size: 1.1em;
     clear:both;
 }
+
+div.fiftypercent {
+    width: 48%;
+    float: left;
+}
+
+/* Forms stuff */
+div.form-row input{
+    width: 100%;
+}
+
+div.form-row .form-help{
+    color: #ccc;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+

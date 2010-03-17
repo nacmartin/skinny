@@ -28,4 +28,3 @@
   </tbody>
 </table>
 
-  <a href="<?php echo url_for('list/new') ?>">New</a>

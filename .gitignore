@@ -20,4 +20,4 @@ plugins/sfCombinePlugin/lib/form/base/*
 .buildpath
 .project
 .settings
-
+config/sensible.yml

@@ -15,14 +15,17 @@
         <li><?php echo $sf_user->getGuardUser()->getUsername()?></li>
         <li><?php echo link_to('logoout', '@sf_guard_signout')?></li> 
       <?php else: ?>
-        <li><?php echo link_to('signin', '@sf_guard_signin')?></li> 
+        <li><?php echo link_to('sign up', '@register')?></li> 
+        <li><?php echo link_to('sign in', '@sf_guard_signin')?></li> 
       <?php endif ?>
       <ul>
     </div>
 
     <div class="wrapAll">
       <?php echo link_to(image_tag('listandcheck.png'), '@homepage')?>
-      <?php echo $sf_content ?>
+      <div class="content">
+        <?php echo $sf_content ?>
+      </div>
     </div>
   </body>
 </html>

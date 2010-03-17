@@ -37,4 +37,17 @@ SkinnyItem:
   relations:
     SkinnyList: { class: SkinnyList, onDelete: CASCADE, local: list_id, foreign: id, foreignAlias: items } 
       
-
+SkinnyActivation:
+  columns:
+    hash:    { type: string(32), notnull: true }
+    user_id: { type: integer(4)}
+  relations:
+    sfGuardUser: 
+      local: user_id
+      onDelete: CASCADE
+      foreignAlias: lists
+  indexes:
+    hash:  
+      fields: [hash]
+    user_hash:  
+      fields: [user_id, hash]
