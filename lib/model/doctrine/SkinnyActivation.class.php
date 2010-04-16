@@ -12,4 +12,7 @@
  */
 class SkinnyActivation extends BaseSkinnyActivation
 {
+  public function getUser(){
+    return Doctrine::getTable('sfGuardUser')->find($this->getUserId());
+  }
 }

@@ -22,7 +22,7 @@
                                   'sf_route'   => 'list_permalink', 
                                   'sf_subject' => $skinny_list), 
                                 true
-                              ))) ?></a></td>
+                              ))) ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

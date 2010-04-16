@@ -18,11 +18,19 @@
         <li><?php echo link_to('sign up', '@register')?></li> 
         <li><?php echo link_to('sign in', '@sf_guard_signin')?></li> 
       <?php endif ?>
-      <ul>
+      </ul>
     </div>
 
     <div class="wrapAll">
       <?php echo link_to(image_tag('listandcheck.png'), '@homepage')?>
+      <div id="flashes">
+        <?php if ($sf_user->hasFlash('notice')): ?>
+          <div class="flash_notice"><?php echo $sf_user->getFlash('notice') ?></div>
+        <?php endif; ?>
+
+        <?php if ($sf_user->hasFlash('error')): ?>
+          <div class="flash_error"><?php echo $sf_user->getFlash('error') ?></div>
+        <?php endif; ?>
       <div class="content">
         <?php echo $sf_content ?>
       </div>

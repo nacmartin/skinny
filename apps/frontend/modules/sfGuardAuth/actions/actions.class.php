@@ -24,8 +24,12 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
       return sfView::SUCCESS; // redisplay form with errors
     }
 
-    // At this point we got a valid form and a created sfGuardUser object
+    //users are inactive until they confirm their email accounts
     $user = $this->form->getObject();
+    $user->setIsActive(false);
+    $user->save();
+
+    // At this point we got a valid form and a created sfGuardUser object
 
     // Create activation entry
     $activation = new SkinnyActivation();
@@ -33,19 +37,17 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     $activation->setHash(md5(rand(100000, 999999)));
     $activation->save();
 
-    // Send user an activation email
-    $mailer = sfContext::getInstance()->getMailer();
+    $message = Swift_Message::newInstance()
+        ->setSubject('Activate your List&Check account')
+        ->setBody($this->getPartial('activationMail', array(
+            'username' => $user->username,
+            'token'    => $activation->hash
+        )))
+        ->setFrom(array('listandcheck@googlemail.com' => 'List & Check'))
+        ->setTo(array($user->email => $user->username));
 
-    $request->setAttribute('user', $user);
-    $request->setAttribute('activation', $activation);
-    $this->getMailer()->composeAndSend(
-        'listandcheck@googlemail.com',
-        $user->email,
-        'Subject',
-        'Body'
-    );
-
-    $this->getUser()->setFlash('notice', 'A confirmation mail has been sent to %mail%', array('%mail%' => $user->getEmail()));
+    $this->getMailer()->send($message);
+    $this->getUser()->setFlash('error', 'A confirmation mail has been sent to '. $user->email);
     $this->redirect('@homepage');
   }
 
@@ -53,5 +55,34 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
   {
     $this->user = $request->getAttribute('user');
     return sfView::SUCCESS;
+  }
+
+  public function executeActivate(sfWebRequest $request)
+  {
+    $key = $this->getRequestParameter('token');
+    $activation = Doctrine::getTable('SkinnyActivation')->
+      findOneByHash($key);
+    if (!$activation){
+      $this->getUser()->setFlash('error', 'Invalid activation key');
+      return sfView::ERROR;
+    }
+
+    if (!$user = $activation->getUser()){
+      $this->getUser()->setFlash('error', 'Sorry, we could not find an user associated with this activation key');
+      return sfView::ERROR;
+    }
+    if ($user->getIsActive()){
+      $this->getUser()->setFlash('error', 'This account is already active');
+      return sfView::ERROR;
+    }
+
+    $user->setIsActive(true);
+    $user->save();
+    $activation->delete();
+
+    $this->getUser()->setFlash('notice', 'Your account has been activated. You can now log in using the username and password you provided at registration time.');
+    $this->redirect('@sf_guard_signin');
+
+
   }
 }

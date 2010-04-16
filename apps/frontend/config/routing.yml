@@ -40,3 +40,7 @@ print:
 register: 
   url:     /user/register
   param:   { module: sfGuardAuth, action: register }
+
+activate:
+  url:     /user/activate/token/:token
+  param:   { module: sfGuardAuth, action: activate }

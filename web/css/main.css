@@ -577,3 +577,18 @@ div.form-row .form-help{
     margin-top: 5px;
 }
 
+.flash_error{
+    background-color:#d4c9c2;
+    border: 2px solid #8f075d;
+    padding: 20px;
+    font-size: 150%;
+    color: black;
+}
+.flash_notice{
+    background-color:#d4c9c2;
+    border: 2px solid #8f075d;
+    padding: 20px;
+    color: black;
+    font-size: 150%;
+}
+d4c9c2
