@@ -44,3 +44,8 @@ register:
 activate:
   url:     /user/activate/token/:token
   param:   { module: sfGuardAuth, action: activate }
+
+changePassword: 
+  url:     /user/changePassword
+  param:   { module: sfGuardAuth, action: changePassword }
+

@@ -57,6 +57,24 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     return sfView::SUCCESS;
   }
 
+  public function executeChangePassword(sfWebRequest $request)
+  {
+    $this->forward404Unless($this->getUser() && $this->getUser()->isAuthenticated());
+    $this->form = new ChangePasswordForm(null, array('user_id' => $this->getUser()->getGuardUser()->getId()));
+    if($request->isMethod('post')){
+      $this->form->bind($request->getParameter($this->form->getName()));
+      if ($this->form->isValid()){
+        $password = $this->form->getValue('password');
+        $user = $this->getUser()->getGuardUser();
+        $user->setPassword($password);
+        $user->save();
+        $this->getUser()->setFlash('notice', 'Password changed');
+        $this->redirect('@homepage');
+
+      }
+    }
+  } 
+
   public function executeActivate(sfWebRequest $request)
   {
     $key = $this->getRequestParameter('token');
@@ -82,7 +100,5 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
 
     $this->getUser()->setFlash('notice', 'Your account has been activated. You can now log in using the username and password you provided at registration time.');
     $this->redirect('@sf_guard_signin');
-
-
   }
 }

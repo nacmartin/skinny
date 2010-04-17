@@ -14,6 +14,7 @@
       <?php if ($sf_user->isAuthenticated()): ?>
         <li><?php echo $sf_user->getGuardUser()->getUsername()?></li>
         <li><?php echo link_to('logoout', '@sf_guard_signout')?></li> 
+        <li><?php echo link_to('change password', '@changePassword')?></li> 
       <?php else: ?>
         <li><?php echo link_to('sign up', '@register')?></li> 
         <li><?php echo link_to('sign in', '@sf_guard_signin')?></li> 
