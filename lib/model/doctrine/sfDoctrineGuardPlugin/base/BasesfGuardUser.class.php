@@ -22,6 +22,7 @@
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
  * @property Doctrine_Collection $lists
+ * @property Doctrine_Collection $SkinnyCheck
  * 
  * @method integer             getId()                      Returns the current record's "id" value
  * @method string              getUsername()                Returns the current record's "username" value
@@ -40,6 +41,7 @@
  * @method Doctrine_Collection getSfGuardUserGroup()        Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey  getRememberKeys()            Returns the current record's "RememberKeys" value
  * @method Doctrine_Collection getLists()                   Returns the current record's "lists" collection
+ * @method Doctrine_Collection getSkinnyCheck()             Returns the current record's "SkinnyCheck" collection
  * @method sfGuardUser         setId()                      Sets the current record's "id" value
  * @method sfGuardUser         setUsername()                Sets the current record's "username" value
  * @method sfGuardUser         setAlgorithm()               Sets the current record's "algorithm" value
@@ -57,6 +59,7 @@
  * @method sfGuardUser         setSfGuardUserGroup()        Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser         setRememberKeys()            Sets the current record's "RememberKeys" value
  * @method sfGuardUser         setLists()                   Sets the current record's "lists" collection
+ * @method sfGuardUser         setSkinnyCheck()             Sets the current record's "SkinnyCheck" collection
  * 
  * @package    skinny
  * @subpackage model
@@ -154,6 +157,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $this->hasMany('SkinnyList as lists', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('SkinnyCheck', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

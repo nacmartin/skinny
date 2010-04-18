@@ -47,19 +47,22 @@ $(document).ready(function()
     .live('click',function(){
       var header = $(this).closest(".ui-widget-header");
       var content = header.next();
+      id = header.parent().parent().attr('id').substring(5);
       if (header.hasClass("ui-state-disabled"))
       {
+        uncheck(id);
         header.removeClass("ui-state-disabled");
         content.removeClass("ui-state-disabled");
       }
       else
       {
+        check(id);
         header.addClass("ui-state-disabled");
         content.addClass("ui-state-disabled");
       }
       return false;
-    })
-    ;
+    }) ;
+
   $(".top a").click(toggleTodo).find(".txt").text("close");
   $(".tagList li:first").addClass("checked");
   $(".tagList li").click(function(){

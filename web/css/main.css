@@ -559,6 +559,7 @@ fieldset {
     margin-right: 23px;
     font-size: 1.1em;
     clear:both;
+    text-shadow: #aaa 2px 1px 1px;
 }
 
 div.fiftypercent {
@@ -578,17 +579,18 @@ div.form-row .form-help{
 }
 
 .flash_error{
-    background-color:#d4c9c2;
+    background-color:#3f0d2d;
     border: 2px solid #8f075d;
     padding: 20px;
     font-size: 150%;
-    color: black;
+    -moz-border-radius:10px;
+    -moz-border-radius:10px;
 }
 .flash_notice{
-    background-color:#d4c9c2;
+    background-color:#3f0d2d;
     border: 2px solid #8f075d;
     padding: 20px;
-    color: black;
     font-size: 150%;
+    -moz-border-radius:10px;
+    -moz-border-radius:10px;
 }
-d4c9c2

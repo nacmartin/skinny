@@ -37,6 +37,14 @@ print:
   url:     /list/print/*
   param:   { module: list, action: print }
 
+checkItem:
+  url:     /list/checkItem/*
+  param:   { module: list, action: checkItem }
+
+uncheckItem:
+  url:     /list/uncheckItem/*
+  param:   { module: list, action: uncheckItem }
+
 register: 
   url:     /user/register
   param:   { module: sfGuardAuth, action: register }

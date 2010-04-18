@@ -1,4 +1,5 @@
 CREATE TABLE skinny_activation (id BIGINT AUTO_INCREMENT, hash VARCHAR(32) NOT NULL, user_id INT, INDEX hash_idx (hash), INDEX user_hash_idx (user_id, hash), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE skinny_check (user_id INT, item_id BIGINT, PRIMARY KEY(user_id, item_id)) ENGINE = INNODB;
 CREATE TABLE skinny_item (id BIGINT AUTO_INCREMENT, name VARCHAR(255), text TEXT, list_id BIGINT NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, slug VARCHAR(255), position TINYINT UNSIGNED, UNIQUE INDEX name_slug_idx (slug), UNIQUE INDEX item_sortable_idx (position), INDEX list_id_idx (list_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE skinny_list (id BIGINT AUTO_INCREMENT, name VARCHAR(255) NOT NULL, private TINYINT(1) DEFAULT '0' NOT NULL, user_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, slug VARCHAR(255), UNIQUE INDEX namer_slug_idx (slug), INDEX user_id_idx (user_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_group (id INT AUTO_INCREMENT, name VARCHAR(255) UNIQUE, description TEXT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
@@ -9,6 +10,8 @@ CREATE TABLE sf_guard_user (id INT AUTO_INCREMENT, username VARCHAR(128) NOT NUL
 CREATE TABLE sf_guard_user_group (user_id INT, group_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(user_id, group_id)) ENGINE = INNODB;
 CREATE TABLE sf_guard_user_permission (user_id INT, permission_id INT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(user_id, permission_id)) ENGINE = INNODB;
 ALTER TABLE skinny_activation ADD CONSTRAINT skinny_activation_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
+ALTER TABLE skinny_check ADD CONSTRAINT skinny_check_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
+ALTER TABLE skinny_check ADD CONSTRAINT skinny_check_item_id_skinny_item_id FOREIGN KEY (item_id) REFERENCES skinny_item(id) ON DELETE CASCADE;
 ALTER TABLE skinny_item ADD CONSTRAINT skinny_item_list_id_skinny_list_id FOREIGN KEY (list_id) REFERENCES skinny_list(id) ON DELETE CASCADE;
 ALTER TABLE skinny_list ADD CONSTRAINT skinny_list_user_id_sf_guard_user_id FOREIGN KEY (user_id) REFERENCES sf_guard_user(id) ON DELETE CASCADE;
 ALTER TABLE sf_guard_group_permission ADD CONSTRAINT sf_guard_group_permission_permission_id_sf_guard_permission_id FOREIGN KEY (permission_id) REFERENCES sf_guard_permission(id) ON DELETE CASCADE;

@@ -82,6 +82,8 @@ function addItem(num) {
   }).responseText;
   return r;
 }
+
+
 function showEdit(item){
   item.children('.formitem').show();
   item.children('.todo-show').hide();
@@ -90,7 +92,37 @@ function showEdit(item){
 </script>
 <?php endif?>
 
+<script type="text/javascript">
+<?php if ($sf_user->isAuthenticated()): ?>
+  function check(id){
+    var r = $.ajax({
+      type: 'GET',
+        url: '<?php echo url_for('list/checkItem')?>'+"?id="+id,
+        async: false
+    }).responseText;
+    return r;
+  }
+  
+  function uncheck(id){
+    var r = $.ajax({
+      type: 'GET',
+        url: '<?php echo url_for('list/uncheckItem')?>'+"?id="+id,
+        async: false
+    }).responseText;
+    return r;
+  }
+<?php else:?>
+  function check(id){
+    $('#unregistered').show();
+  }
 
+  function uncheck(id){
+    $('#unregistered').show();
+  }
+<?php endif?>
+</script>
+
+<div id="unregistered" class="flash_notice">Unregistered users cannot save their progress. <?php echo link_to('Register, is free!', '@sf_guard_signin')?></div>
 <div id="title"><h1><?php echo $list->name?></h1></div>
 <ul id="todo" class="ui-widget ui-helper-reset">
   <?php foreach ($rows as $row): ?>

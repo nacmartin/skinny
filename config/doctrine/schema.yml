@@ -36,6 +36,7 @@ SkinnyItem:
     list_id: { type: integer, notnull: true }
   relations:
     SkinnyList: { class: SkinnyList, onDelete: CASCADE, local: list_id, foreign: id, foreignAlias: items } 
+#    SkinnyChecks: { class: sfGuardUser, refClass: SkinnyCheck, local: item_id, foreign: user_id, foreignAlias: SkinnyChecks}
       
 SkinnyActivation:
   columns:
@@ -51,3 +52,11 @@ SkinnyActivation:
       fields: [hash]
     user_hash:  
       fields: [user_id, hash]
+
+SkinnyCheck:
+  columns:
+    user_id: { type: integer(4), primary: true }
+    item_id: { type: integer, primary: true }
+  relations:
+    sfGuardUser:  { onDelete: CASCADE, local: user_id, foreign: id }
+    SkinnyItem:   { onDelete: CASCADE, local: item_id, foreign: id }

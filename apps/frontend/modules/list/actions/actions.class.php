@@ -124,4 +124,25 @@ class listActions extends sfActions
     return $this->renderPartial('item', array('item' => $item, 'include_dashboard_links' => true, 'form' => $form, 'owner' => true));
   }
 
+  public function executeCheckItem($request)
+  {
+    $this->forward404unless($request->isXmlHttpRequest());
+    $check = new SkinnyCheck();
+    $check->item_id = $request->getParameter('id');
+    $check->user_id = $this->getUser()->getGuardUser()->id;
+    $check->save();
+    return sfView::NONE;
+  }
+
+  public function executeUncheckItem($request)
+  {
+    $this->forward404unless($request->isXmlHttpRequest());
+    $q = Doctrine_Query::create()
+      ->delete('SkinnyCheck')
+      ->addWhere('item_id = ?', $request->getParameter('id'))
+      ->addWhere('user_id = ?', $this->getUser()->getGuardUser()->id);
+    $deleted = $q->execute();
+    return sfView::NONE;
+  }
+
 }
