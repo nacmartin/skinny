@@ -12,11 +12,10 @@ class SkinnyListForm extends BaseSkinnyListForm
 {
   public function configure()
   {
-    $this->useFields(array(
-      'name',
-      'private',
-      'items',
-      'id'
-    ));
+    #$this->useFields(array(
+    #  'name',
+    #  'private',
+    #  'id'
+    #));
   }
 }

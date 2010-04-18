@@ -1,0 +1,34 @@
+skinny_item:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                SkinnyItem
+    module:               item
+    prefix_path:          /item
+    column:               id
+    with_wildcard_routes: true
+
+skinny_list:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                SkinnyList
+    module:               list
+    prefix_path:          /list
+    column:               id
+    with_wildcard_routes: true
+
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# default rules
+homepage:
+  url:   /
+  param: { module: list, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

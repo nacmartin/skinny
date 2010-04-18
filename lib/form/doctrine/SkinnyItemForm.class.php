@@ -13,11 +13,11 @@ class SkinnyItemForm extends BaseSkinnyItemForm
   public function configure()
   {
     $this->setWidget('text', new sfWidgetFormTextarea(array(), array('style'=>'height:200px;')));
-    $this->useFields(array(
-      'id',  
-      'name',
-      'text',
-    ));
+    #$this->useFields(array(
+    #  'id',  
+    #  'name',
+    #  'text',
+    #));
     //anyways we check if the owner is the one editing
     //and CSRF is responsible of a bug if you reorder items while editing
     $this->disableCSRFProtection();
