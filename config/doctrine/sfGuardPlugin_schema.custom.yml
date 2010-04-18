@@ -19,6 +19,9 @@ sfGuardUser:
       notnull: true
     salt: string(128)
     password: string(128)
+    new_password: string(128)
+    new_password_created_at: 
+      type: timestamp
     is_active:
       type: boolean
       default: 1

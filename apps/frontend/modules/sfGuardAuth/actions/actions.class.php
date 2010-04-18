@@ -3,8 +3,8 @@
 require_once(sfConfig::get('sf_plugins_dir').'/sfDoctrineGuardPlugin/modules/sfGuardAuth/lib/BasesfGuardAuthActions.class.php');
 
 /*
-* There is a lot of code here from http://symfonians.org/browser/trunk/apps/main/modules/sfGuardAuth/actions/actions.class.php
-*/
+ * There is a lot of code here from http://symfonians.org/browser/trunk/apps/main/modules/sfGuardAuth/actions/actions.class.php
+ */
 
 
 class sfGuardAuthActions extends BasesfGuardAuthActions
@@ -75,6 +75,36 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     }
   } 
 
+  public function executePassword($request)
+  {
+    $this->form = new RememberPasswordForm();
+    if($request->isMethod('post')){
+      $this->form->bind($request->getParameter($this->form->getName()));
+      if ($this->form->isValid()){
+        $email = $this->form->getValue('email');
+        $user = Doctrine::getTable('sfGuardUser')->findOneByEmail($email);
+        $password = substr(md5(rand(100000, 999999)), 0, 8);
+        $user->setPasswordForgotten($password);
+
+        $message = Swift_Message::newInstance()
+          ->setSubject('Password reminder')
+          ->setBody($this->getPartial('forgotPasswordMail', array(
+            'username' => $user->username,
+            'password'    => $password
+          )))
+          ->setFrom(array('listandcheck@googlemail.com' => 'List & Check'))
+          ->setTo(array($user->email => $user->username));
+
+        $this->getMailer()->send($message);
+        $this->getUser()->setFlash('notice', 'A new password has been sent to '. $user->email);
+        $this->redirect('@homepage');
+
+      }else{
+        $this->getUser()->setFlash('error', 'There are no accounts registered with this email address');
+      }
+    }
+  }
+
   public function executeActivate(sfWebRequest $request)
   {
     $key = $this->getRequestParameter('token');
@@ -101,4 +131,5 @@ class sfGuardAuthActions extends BasesfGuardAuthActions
     $this->getUser()->setFlash('notice', 'Your account has been activated. You can now log in using the username and password you provided at registration time.');
     $this->redirect('@sf_guard_signin');
   }
+
 }

@@ -9,7 +9,7 @@
     </fieldset>
     <p style="text-align:center">
       <?php echo $form['_csrf_token'] ?>
-      <input type="submit" value="<?php echo 'Click here to register your account' ?>" />
+      <input type="submit" value="<?php echo 'Save changes' ?>" />
     </p>
   </form>
 </div>

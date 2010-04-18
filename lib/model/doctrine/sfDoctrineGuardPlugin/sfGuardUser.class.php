@@ -12,4 +12,71 @@
  */
 class sfGuardUser extends PluginsfGuardUser
 {
+  //Override this function to check if user is identifid with a new password
+  //from the forgotten password process
+  public function checkPassword($password)
+  {
+    if ($callable = sfConfig::get('app_sf_guard_plugin_check_password_callable'))
+    {
+      return call_user_func_array($callable, array($this->getUsername(), $password, $this));
+    }
+    else
+    {
+      return ($this->checkPasswordByGuard($password) || $this->checkNewPassword($password)) ;
+    }
+  }
+
+  public function checkNewPassword($password){
+    $algorithm = $this->getAlgorithm();
+    if (false !== $pos = strpos($algorithm, '::'))
+    {
+      $algorithm = array(substr($algorithm, 0, $pos), substr($algorithm, $pos + 2));
+    }
+    if (!is_callable($algorithm))
+    {
+      throw new sfException(sprintf('The algorithm callable "%s" is not callable.', $algorithm));
+    }
+
+    //Check if the newpassword is valid and it has not expired (7 days)
+    if ($this->getNewPassword() == call_user_func_array($algorithm, array($this->getSalt().$password)) && $this->getNewPasswordCreatedAt() > $time() - 86400 * 7 ){
+      $this->validateNewPassword();
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  //replace old password with new one
+  public function validateNewPassword(){
+    parent::_set('password',$this->getNewPassword());
+    $this->setNewPassword(null);
+    $this->setNewPasswordCreatedAt(null);
+    $this->save();
+  }
+
+
+  //Repeating code from plugins/sfGuardPlugin/lib/model/plugin/PluginsfGuardUser.php sad :(  
+  public function setPasswordForgotten($password){
+    if (!$password && 0 == strlen($password))
+    {
+      return;
+    }
+
+    if (!$salt = $this->getSalt())
+    {
+      $salt = md5(rand(100000, 999999).$this->getUsername());
+      $this->setSalt($salt);
+    }
+    $algorithm = sfConfig::get('app_sf_guard_plugin_algorithm_callable', 'sha1');
+    $algorithmAsStr = is_array($algorithm) ? $algorithm[0].'::'.$algorithm[1] : $algorithm;
+    if (!is_callable($algorithm))
+    {
+      throw new sfException(sprintf('The algorithm callable "%s" is not callable.', $algorithmAsStr));
+    }
+    $this->setAlgorithm($algorithmAsStr);
+
+    $this->setNewPassword(call_user_func_array($algorithm, array($salt.$password)));
+    $this->setDateTimeObject('new_password_created_at', new DateTime());
+    $this->save();
+  }
 }

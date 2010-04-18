@@ -49,3 +49,7 @@ changePassword:
   url:     /user/changePassword
   param:   { module: sfGuardAuth, action: changePassword }
 
+rememberPassword:
+  url:     /user/rememberPassword
+  param:   { module: sfGuardAuth, action: password }
+
