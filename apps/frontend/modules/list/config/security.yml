@@ -13,3 +13,5 @@ updateSkinnyItem:
 deleteSkinnyItem:
   is_secure: on
   credentials: [[admistrator owner]]
+mylists:
+  is_secure: on

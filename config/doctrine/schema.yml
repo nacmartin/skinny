@@ -10,6 +10,7 @@ SkinnyList:
     name: { type: string(255), notnull: true}
     private: { type: boolean, notnull: true, default: 0 }
     user_id: { type: integer(4)}
+    description: { type: string(1024) }
   relations:
     sfGuardUser: 
       local: user_id

@@ -57,11 +57,18 @@ class listActions extends sfActions
       $this->items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id', 'ASCENDING');
   }
 
-
-
   public function executeNew(sfWebRequest $request)
   {
-    $this->form = new SkinnyListForm();
+    $list = new SkinnyList(); 
+    $list->user_id = $this->getUser()->getGuardUser()->getId();
+    $this->form = new SkinnyListForm($list);
+    if ($request->isMethod('post')){
+      $this->form->bind($request->getParameter($this->form->getName()));
+      if ($this->form->isValid()){
+        $list = $this->form->save();
+        $this->redirect('list/show?slug='.$list->slug);
+      }
+    }
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -145,4 +152,12 @@ class listActions extends sfActions
     return sfView::NONE;
   }
 
+  public function executeMylists($request)
+  {
+    $this->lists = Doctrine_Query::create()->
+      from('SkinnyList l')->
+      where('l.user_id = ?', $this->getUser()->getGuardUser()->id )->
+      orderby('l.id DESC')->
+      execute();
+  }
 }

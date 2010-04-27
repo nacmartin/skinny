@@ -2,7 +2,10 @@
 	http://sftips.localhost/css/frontend/main.css
 	http://check.localhost/css/frontend/main.css
 */
-
+* {
+ margin: 0;
+ padding: 0;
+}
 
 /* @group Structure */
 
@@ -37,13 +40,11 @@ a img
 }
 .wrapAll
 {
-	position: relative;
 	width: 58.33333em; /* 700px */
 	margin: 0 auto;
 }
 .header
 {
-	position: relative;
 	height: 240px;
 	overflow: visible;
 }
@@ -83,23 +84,21 @@ a img
 
 div.topline
 {
-    float:right;
-	position: relative;
+  float:right;
 	padding: 0 1em;
 	color: #ccc;
 	font-size: 150%;
 }
 .topline a,
 .topline a:link,
-.topline a:hover,
 .topline a:active,
-.topline a:visited
 {
 	text-decoration: none;
 	color: #ccc;
 	text-transform: lowercase;
     text-decoration: underline;
 }
+
 div.topline ul
 {
 	margin: 1em 0;
@@ -142,11 +141,10 @@ pre code
 }
 a,
 a:link,
-a:hover,
 a:active,
 a:visited
 {
-	color: #fff;
+  color: #ccc;
 	text-decoration: underline;
 }
 .expressYourself
@@ -172,7 +170,6 @@ a:visited
 }
 .footer a,
 .footer a:link,
-.footer a:hover,
 .footer a:active,
 .footer a:visited
 {
@@ -214,7 +211,6 @@ a:visited
 }
 .madeBy strong a,
 .madeBy strong a:link,
-.madeBy strong a:hover,
 .madeBy strong a:active,
 .madeBy strong a:visited
 {
@@ -494,6 +490,7 @@ body.todoShow #todo .ui-widget-content
 
 textarea {
     border: 0px;
+    vertical-align:top;
 }
 input {
     border: 0px;
@@ -554,12 +551,12 @@ fieldset {
 }
 
 #title {
-    float: right;
+    text-align: right;
     margin-right: 55px !important;
     margin-right: 23px;
     font-size: 1.1em;
     clear:both;
-    text-shadow: #aaa 2px 1px 1px;
+    text-shadow: #888 0px 0px 10px;
 }
 
 div.fiftypercent {
@@ -594,3 +591,40 @@ div.form-row .form-help{
     -moz-border-radius:10px;
     -moz-border-radius:10px;
 }
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+ul.listoflists{
+  font-size: 180%;
+}
+
+ul.listoflists a{
+  color: #fff;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.right {
+  text-align: right;
+	margin: 20px 45px 0 0;
+}
+.pinkrounded{
+  background-color:#3f0d2d;
+  border: 2px solid #8f075d;
+  padding: 10px;
+  font-size: 100%;
+	-webkit-border-radius: 3px;
+  -moz-border-radius:10px;
+  color: #c797b6;
+}
+.msgcenter{
+  margin-top:100px;
+  text-align:center;
+}
+
+
