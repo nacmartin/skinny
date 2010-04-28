@@ -123,7 +123,7 @@ function showEdit(item){
 </script>
 
 <div id="unregistered" style="display:none" class="flash_notice">Unregistered users cannot save their progress. <?php echo link_to('Register, it\'s free!', '@sf_guard_signin')?></div>
-<div id="title"><h1><?php echo $list->name?></h1></div>
+<div class="title_head"><h1><?php echo $list->name?></h1></div>
 <div id="description"><?php echo $list->get('descriptionHtml', ESC_RAW)?></div>
 <ul id="todo" class="ui-widget ui-helper-reset">
   <?php foreach ($rows as $row): ?>

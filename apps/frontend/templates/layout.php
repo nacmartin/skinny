@@ -33,8 +33,15 @@
         <?php if ($sf_user->hasFlash('error')): ?>
           <div class="flash_error"><?php echo $sf_user->getFlash('error') ?></div>
         <?php endif; ?>
+      </div>
       <div class="content">
         <?php echo $sf_content ?>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="opensource">
+        <img src="/images/opensource.png"/>list&check is licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="nofollow">cc-by-sa-3.0</a> Check <a href="http://github.com/nacmartin/skinny">the repository on github</a>. Created by <a href="http://nacho-martin.com">Nacho Martín</a>. Design obviously inspired on <a href="http://symfony-check.org">symfony-check</a>. <a href="http://github.com/nacmartin/blob/master/README.rdoc">Credits</a>.
+
       </div>
     </div>
   </body>

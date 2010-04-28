@@ -1,17 +1,14 @@
 edit:
   is_secure: on
-  credentials: [[admistrator owner]]
-sort:
-  is_secure: on
-  credentials: [[admistrator owner]]
+  credentials: [[owner]]
 addSkinnyItem:
   is_secure: on
-  credentials: [[admistrator owner]]
+  credentials: [[owner]]
 updateSkinnyItem:
   is_secure: on
-  credentials: [[admistrator owner]]
+  credentials: [[owner]]
 deleteSkinnyItem:
   is_secure: on
-  credentials: [[admistrator owner]]
+  credentials: [[owner]]
 mylists:
   is_secure: on

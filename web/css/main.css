@@ -550,10 +550,17 @@ fieldset {
     -moz-border-radius-topright:4px;
 }
 
-#title {
+.title_head {
     text-align: right;
     margin-right: 55px !important;
     margin-right: 23px;
+    font-size: 1.1em;
+    clear:both;
+    text-shadow: #888 0px 0px 10px;
+}
+.title_head_center {
+    margin-top: 30px;
+    margin-bottom: 30px;
     font-size: 1.1em;
     clear:both;
     text-shadow: #888 0px 0px 10px;
@@ -597,12 +604,15 @@ ul{
   padding: 0;
 }
 
-ul.listoflists{
-  font-size: 180%;
+ul.listoflists .shortdesc a{
+  color: #aaa;
+  font-size: 100%;
+  text-decoration: none;
 }
 
 ul.listoflists a{
   color: #fff;
+  font-size: 180%;
 }
 
 a:hover {
@@ -627,4 +637,31 @@ a:hover {
   text-align:center;
 }
 
+#footer{
+  margin-top:50px;
+  padding-top:30px;
+  color: #aaa;
+  clear: both;
+}
 
+#opensource{
+  margin: 0 auto;
+  width: 400px;
+  background-color: #444;
+  padding: 20px;
+}
+
+#opensource img{
+  float: left;
+  margin-right:10px;
+}
+
+#description{
+  color: #aaa;
+  margin:15px 80px 15px 30px;
+}
+
+.bigtext{
+  margin-top: 50px;
+  font-size: 130%;
+}
