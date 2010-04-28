@@ -31,9 +31,12 @@ class listActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
-    $this->skinny_lists = Doctrine::getTable('SkinnyList')
-      ->createQuery('a')
-      ->execute();
+    $this->lists = Doctrine_Query::create()->
+      from('SkinnyList l')->
+      orderby('l.updated_at DESC')->
+      limit('10')->
+      execute();
+
   }
 
   public function executeShow(sfWebRequest $request)

@@ -1,30 +1,10 @@
-<h1>Skinny lists List</h1>
+<div id="title"><h1>Last updated lists</h1></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Created at</th>
-      <th>Updated at</th>
-      <th>View</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php foreach ($skinny_lists as $skinny_list): ?>
-    <tr>
-      <td><?php echo $skinny_list->getName() ?></td>
-      <td><?php echo $skinny_list->getCreatedAt() ?></td>
-      <td><?php echo $skinny_list->getUpdatedAt() ?></td>
-      <td><?php echo link_to("View", 'list_permalink', $skinny_list, 
-                            array(
-                              'name' => url_for(
-                                array(
-                                  'sf_route'   => 'list_permalink', 
-                                  'sf_subject' => $skinny_list), 
-                                true
-                              ))) ?></td>
-    </tr>
-    <?php endforeach; ?>
-  </tbody>
-</table>
-
+<?php if($sf_user->isAuthenticated()):?>
+  <div class="right"><?php echo link_to('Create a new list', 'list/new', array('class'=>'pinkrounded'))?></div>
+<?php endif?>
+<ul class="listoflists">
+  <?php foreach ($lists as $list):?>
+  <li><?php echo link_to($list->name, 'list/show?slug='.$list->slug)?></li>
+  <?php endforeach ?>
+</ul>

@@ -19,4 +19,8 @@ class SkinnyList extends BaseSkinnyList
     }
     return ($this->getUserId() == $user->getGuardUser()->getId()) ? true : false;
   }
+  public function getDescriptionHtml(){
+    require_once(sfConfig::get('sf_lib_dir').'/vendor/markdown.php');
+    return Markdown(htmlspecialchars($this->description));
+  }
 }
