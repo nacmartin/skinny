@@ -94,7 +94,6 @@ class listActions extends sfActions
     $obj = json_decode($jsarray); 
     $pos = 1;
     foreach ($obj as $item_id){
-      $this->forward404Unless($this->getUser()->isOwnerOf($item->list));
       $item = Doctrine::getTable('SkinnyItem')->find(substr($item_id,5));
       $item->moveToPosition($pos);
       $item->save();

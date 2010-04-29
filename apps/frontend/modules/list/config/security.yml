@@ -7,6 +7,8 @@ addSkinnyItem:
 updateSkinnyItem:
   is_secure: on
   credentials: [[owner]]
+sort:
+  is_secure: off
 deleteSkinnyItem:
   is_secure: on
   credentials: [[owner]]
