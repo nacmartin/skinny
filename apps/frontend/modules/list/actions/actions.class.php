@@ -31,6 +31,9 @@ class listActions extends sfActions
 
   public function executeIndex(sfWebRequest $request)
   {
+    if ($this->getUser()->isAuthenticated()){
+      $this->redirect('list/mylists');
+    }
     $this->lists = Doctrine_Query::create()->
       from('SkinnyList l')->
       orderby('l.updated_at DESC')->
