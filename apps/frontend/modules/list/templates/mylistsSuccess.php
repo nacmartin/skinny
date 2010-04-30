@@ -1,6 +1,6 @@
 <div class="title_head"><h1>My lists</h1></div>
 
-<?php if (count($lists) > 1):?>
+<?php if (count($lists) ):?>
   <div class="right"><?php echo link_to('Create a new list', 'list/new', array('class'=>'pinkrounded'))?></div>
   <?php include_partial('listoflists', array('lists' => $lists)) ?>
 <?php else:?>
