@@ -6,7 +6,7 @@
       <div class="ui-icon ui-icon-arrowthick-2-n-s icon-drag"></div>
       <div class="ui-icon ui-icon-pencil icon-edit"></div>
     <?php endif?>
-    <div class="ui-widget-header item-header ui-helper-reset ui-corner-all ui-state-default">
+    <div class="ui-widget-header item-header ui-helper-reset ui-corner-all ui-state-default <?php if(count($item->getSkinnyChecks())){echo 'ui-state-disabled';}?>">
       <span class="title"><?php echo $item->name ?></span>
       <?php if (isset($include_dashboard_links) && true === $include_dashboard_links): ?>
         <span class="check"></span>

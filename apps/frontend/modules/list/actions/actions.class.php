@@ -46,7 +46,13 @@ class listActions extends sfActions
   {
     $this->list = $this->getRoute()->getObject();
     $this->forward404Unless($this->list);
-    $items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id', 'ASCENDING');
+    $q = Doctrine_Query::create()->from('SkinnyItem i')
+      ->leftJoin('i.SkinnyChecks c WITH c.id = ?', $this->getUser()->getGuardUser()->getId())
+      ->leftJoin('i.SkinnyList l')
+      ->where('l.id = ?', $this->list->id)
+      ->OrderBy('i.position');
+
+    $items = $q->execute();
     $this->rows = array();
     foreach ($items as $key => $item){
       $this->rows[$key] = array( 
