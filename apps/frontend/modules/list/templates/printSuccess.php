@@ -2,7 +2,7 @@
 <ul>
   <?php foreach ($items as $item):?>
     <div class="print-title">
-      <h2><?php echo image_tag("checkbox.png")?>
+      <h2><?php echo count($item->getSkinnyChecks()) ? image_tag("checkbox-checked.png") : image_tag("checkbox.png")?>
       <?php echo $item->name ?></h2></div>
     <?php $content = $item->text?>
     <?php if ($content) :?>

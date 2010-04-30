@@ -559,8 +559,8 @@ fieldset {
     text-shadow: #888 0px 0px 10px;
 }
 .title_head_center {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     font-size: 1.1em;
     clear:both;
     text-shadow: #888 0px 0px 10px;
@@ -665,6 +665,6 @@ a:hover {
 }
 
 .bigtext{
-  margin-top: 50px;
+  margin-top: 30px;
   font-size: 130%;
 }

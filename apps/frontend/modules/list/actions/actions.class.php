@@ -43,20 +43,8 @@ class listActions extends sfActions
   {
     $this->list = $this->getRoute()->getObject();
     $this->forward404Unless($this->list);
-    $q = Doctrine_Query::create()->from('SkinnyItem i')
-      ->leftJoin('i.SkinnyList l')
-      ->where('l.id = ?', $this->list->id)
-      ->OrderBy('i.position');
-    //has this user checked the items?
-    if ($this->getUser()->isAuthenticated()){
-      $q->leftJoin('i.SkinnyChecks c WITH c.id = ?', $this->getUser()->getGuardUser()->getId());
-    //user is not logged, 0 is an impossible id
-    //If we don't do this, it load all the skinnychecks
-    }else{
-      $q->leftJoin('i.SkinnyChecks c WITH c.id = ?', 0);
-    }
 
-    $items = $q->execute();
+    $items = SkinnyItemTable::getItemsByListId($this->list->id, $this->getUser());
     $this->rows = array();
     foreach ($items as $key => $item){
       $this->rows[$key] = array( 
@@ -70,7 +58,8 @@ class listActions extends sfActions
   {
       $this->list = $this->retrieveSkinnyList();
       $this->forward404Unless($this->list);
-      $this->items = Doctrine::getTable('SkinnyItem')->findAllSortedWithParent($this->list->id, 'list_id', 'ASCENDING');
+
+      $this->items = SkinnyItemTable::getItemsByListId($this->list->id, $this->getUser());
   }
 
   public function executeNew(sfWebRequest $request)
