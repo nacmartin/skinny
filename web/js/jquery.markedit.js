@@ -279,8 +279,14 @@
                 // Add an entry for this instance of MarkEdit
                 MarkEditHistory[$(this).attr('id')] = { 'undo': [], 'redo': [] };
 
-                // Set current state as first history item
-                MarkEdit.appendHistory($(this).markeditGetState(), $(this).attr('id'));
+                // Set empty state as first history item
+                var currstate = {
+                     'beforeSelect': "",
+                     'select': "",
+                     'afterSelect': "",
+                     'links': [ ],
+                 }
+                MarkEdit.appendHistory(currstate, $(this).attr('id'));
 
                 // Bind events to update history
                 var textarea = $(this);
