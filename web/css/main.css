@@ -575,6 +575,9 @@ div.fiftypercent {
 div.form-row input{
     width: 100%;
 }
+div.form-row textarea{
+    width: 100%;
+}
 
 div.form-row .form-help{
     color: #ccc;
