@@ -137,7 +137,7 @@ pre
 code
 {
 	font-size: 1.223em;
-  background-color: #eee;
+  background-color: #e0e0e0;
 }
 pre code
 {
@@ -614,6 +614,10 @@ div.form-row .form-help{
 ul{
   margin: 0;
   padding: 0;
+}
+
+ul.listoflists{
+  margin-top: 20px;
 }
 
 ul.listoflists .shortdesc a{
