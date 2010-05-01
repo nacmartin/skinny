@@ -33,9 +33,15 @@ class listActions extends sfActions
   {
     $this->lists = Doctrine_Query::create()->
       from('SkinnyList l')->
+      where('l.private = ?', false)->
       orderby('l.updated_at DESC')->
       limit('10')->
       execute();
+
+    //SEO
+    $response = $this->getResponse();
+    $response->addMeta('description', 'Create lists quickly as detailed as you want');
+    $response->setTitle('list & check');
 
   }
 
@@ -55,6 +61,11 @@ class listActions extends sfActions
         'form' => new SkinnyItemForm($item) );
     }
     $this->owner = $this->getUser()->isOwnerOf($this->list);
+
+    //SEO
+    $response = $this->getResponse();
+    $response->addMeta('description', $this->list->description);
+    $response->setTitle($this->list->name.' - list & check');
   }
 
   public function executePrint(sfWebRequest $request)
@@ -63,6 +74,9 @@ class listActions extends sfActions
       $this->forward404Unless($this->list);
 
       $this->items = SkinnyItemTable::getItemsByListId($this->list->id, $this->getUser());
+    //SEO
+    $response = $this->getResponse();
+    $response->setTitle($this->list->name.' - list & check');
   }
 
   public function executeNew(sfWebRequest $request)
@@ -77,6 +91,8 @@ class listActions extends sfActions
         $this->redirect('list/show?slug='.$list->slug);
       }
     }
+    $response = $this->getResponse();
+    $response->setTitle('New list - list & check');
   }
 
   public function executeDelete(sfWebRequest $request)
@@ -167,5 +183,9 @@ class listActions extends sfActions
       where('l.user_id = ?', $this->getUser()->getGuardUser()->id )->
       orderby('l.id DESC')->
       execute();
+
+    //SEO
+    $response = $this->getResponse();
+    $response->setTitle('My lists - list & check');
   }
 }
