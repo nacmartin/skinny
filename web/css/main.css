@@ -460,6 +460,11 @@ body.todoShow #todo .ui-widget-header
 	/*font-size: .76923em;*/ /* 12px */
 	font-size: .897em;
 }
+
+#todo .ui-widget-content ul{
+  margin-left: 15px;
+}
+
 body.javascriptOff #todo .ui-widget-content,
 body.todoShow #todo .ui-widget-content
 {
@@ -671,3 +676,4 @@ a:hover {
   margin-top: 30px;
   font-size: 130%;
 }
+
