@@ -40,6 +40,7 @@ $(function() {
     newit.find('textarea:last-child').markedit();
     newit.find('.formitem:last').show();
     newit.find('.todo-show:last').hide();
+    newit.find('.formitem:last #skinny_item_name').focus();
 
   });
 
@@ -87,6 +88,7 @@ function addItem(num) {
 function showEdit(item){
   item.children('.formitem').show();
   item.children('.todo-show').hide();
+  item.find('.formitem #skinny_item_name').focus();
 }
 
 </script>
