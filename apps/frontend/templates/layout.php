@@ -17,6 +17,7 @@
       pageTracker._setDomainName(".listandcheck.com");
       pageTracker._trackPageview();
     } catch(err) {}</script>
+    <meta name="google-site-verification" content="Ycw-C-E1v2HSmQT84unM5QtNXoO3eQ0hkUFrUaAvyfM" />
   </head>
   <body>
     <div class="topline">

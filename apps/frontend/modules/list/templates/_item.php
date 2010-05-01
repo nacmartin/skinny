@@ -27,9 +27,6 @@
         </p>
       <?php endif ?>
       <?php echo $item->get('content_html', ESC_RAW)?> 
-      <?php if (isset($include_dashboard_links) && true === $include_dashboard_links): ?>
-        <p class = "top"><a href="#todoAnchors"><span class="ui-icon ui-icon-carat-1-n"></span><span class="txt">top</span></a></p>
-      <?php endif?>
     </div>
   </div>
   <?php if ($owner):?>
