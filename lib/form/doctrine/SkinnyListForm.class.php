@@ -14,20 +14,21 @@ class SkinnyListForm extends BaseSkinnyListForm
   {
     $this->useFields(array(
       'name',
-//      'private',
+      'private',
       'id',
       'description'
     ));
     $this->widgetSchema->setLabels(array(
       'name'    => 'List name',
-//      'private'   => 'Keep this list private?',
+      'private'   => 'Is private?',
       'description' => 'Description',
     ));
 
     // helps
     $this->widgetSchema->setHelps(array(
       'name'  => 'Give a title to the list.',
-      'description'     => 'You can write comments or a short description here'
+      'description'     => 'You can write comments or a short description here',
+      'private' => 'Mark this if you don\'t want this list to be public'
     ));
 
 

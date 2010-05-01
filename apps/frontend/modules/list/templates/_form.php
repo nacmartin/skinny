@@ -4,8 +4,8 @@
         <legend>New list</legend>
         <?php echo $form->renderGlobalErrors() ?>
         <?php echo $form['name']->renderRow() ?>
-        <?php //echo $form['private']->renderRow() ?>
         <?php echo $form['description']->renderRow() ?>
+        <?php echo $form['private']->renderRow() ?>
       </fieldset>
       <p style="text-align:center">
         <?php echo $form['_csrf_token'] ?>

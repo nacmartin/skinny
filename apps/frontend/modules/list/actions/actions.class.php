@@ -44,6 +44,9 @@ class listActions extends sfActions
     $this->list = $this->getRoute()->getObject();
     $this->forward404Unless($this->list);
 
+    $this->owner = $this->getUser()->isOwnerOf($this->list);
+    $this->forward404If($this->list->private && !$this->owner);
+
     $items = SkinnyItemTable::getItemsByListId($this->list->id, $this->getUser());
     $this->rows = array();
     foreach ($items as $key => $item){
