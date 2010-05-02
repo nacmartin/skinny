@@ -10,7 +10,7 @@
       </fieldset>
       <p style="text-align:center">
         <?php echo $form['_csrf_token'] ?>
-        <input type="submit" value="<?php echo 'Create the list' ?>" />
+        <input type="submit" value="<?php echo $form->getObject()->isNew() ? 'Create the list' : 'Save' ?>" />
       </p>
   </form>
 </div>
