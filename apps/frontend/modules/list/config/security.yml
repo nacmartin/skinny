@@ -14,3 +14,9 @@ deleteSkinnyItem:
   credentials: [[owner]]
 mylists:
   is_secure: on
+update:
+  is_secure: on
+  credentials: [[owner]]
+delete:
+  is_secure: on
+  credentials: [[owner]]

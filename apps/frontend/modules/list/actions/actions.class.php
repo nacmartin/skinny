@@ -95,9 +95,23 @@ class listActions extends sfActions
     $response->setTitle('New list - list & check');
   }
 
+  public function executeUpdate(sfWebRequest $request)
+  {
+    $list = $this->retrieveSkinnyList();
+    $this->form = new SkinnyListForm($list);
+    if ($request->isMethod('post')){
+      $this->form->bind($request->getParameter($this->form->getName()));
+      if ($this->form->isValid()){
+        $list = $this->form->save();
+        $this->redirect('list/show?slug='.$list->slug);
+      }
+    }
+    $response = $this->getResponse();
+    $response->setTitle('Edit list - list & check');
+  }
+
   public function executeDelete(sfWebRequest $request)
   {
-    $request->checkCSRFProtection();
 
     $this->forward404Unless($skinny_list = Doctrine::getTable('SkinnyList')->find(array($request->getParameter('id'))), sprintf('Object skinny_list does not exist (%s).', $request->getParameter('id')));
     $skinny_list->delete();

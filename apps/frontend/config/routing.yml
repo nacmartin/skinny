@@ -17,6 +17,14 @@ new_list:
   url:     /list/new
   param:   { module: list, action: new }
 
+edit_list:
+  url:     /list/edit/:id
+  param:   { module: list, action: update }
+
+delete_list:
+  url:     /list/delete/:id
+  param:   { module: list, action: delete }
+
 add_item:
   url:     /list/addItem/*
   param:   { module: list, action: addSkinnyItem }

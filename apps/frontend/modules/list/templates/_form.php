@@ -1,8 +1,9 @@
 <div class="fiftypercent">
-  <form action="<?php echo url_for('list/new') ?>" method="post">
+  <form action="<?php echo url_for('list/'.($form->getObject()->isNew() ? 'new':'update?id='.$form->getObject()->id)) ?>" method="post">
       <fieldset>
         <legend>New list</legend>
         <?php echo $form->renderGlobalErrors() ?>
+        <?php echo $form['id']->render() ?>
         <?php echo $form['name']->renderRow() ?>
         <?php echo $form['description']->renderRow() ?>
         <?php echo $form['private']->renderRow() ?>

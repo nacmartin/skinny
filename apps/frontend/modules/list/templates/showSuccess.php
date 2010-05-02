@@ -1,3 +1,22 @@
+<div id="unregistered" style="display:none" class="flash_notice">Unregistered users cannot save their progress. <?php echo link_to('Register, it\'s free!', '@sf_guard_signin')?></div>
+<div class="title_head">
+<h1><?php echo $list->name?></h1></div>
+<div id="description"><?php echo $list->get('descriptionHtml', ESC_RAW)?></div>
+<ul id="todo" class="ui-widget ui-helper-reset">
+  <?php foreach ($rows as $row): ?>
+    <?php include_partial('list/item',array('item' => $row['item'], 'include_dashboard_links' => true, 'owner' => $owner, 'form' => $row['form']))?>
+  <?php endforeach; ?>
+</ul>
+<div id="foot-show">
+<?php if ($owner): ?>
+<button id="add_item" type="button"><?php echo "Add item"?></button>
+<?php endif?>
+<?php echo link_to('Print', "list/print?id=$list->id")?>
+<?php if($owner):?>
+  <?php echo link_to('Edit', 'list/update?id='.$list->id)?>
+  <?php echo link_to('Delete', 'list/delete?id='.$list->id, 'confirm=Are you sure?')?>
+<?php endif?>
+
 <?php if ($owner):?>
 <script type="text/javascript">
 $(function() {
@@ -123,17 +142,3 @@ function showEdit(item){
   }
 <?php endif?>
 </script>
-
-<div id="unregistered" style="display:none" class="flash_notice">Unregistered users cannot save their progress. <?php echo link_to('Register, it\'s free!', '@sf_guard_signin')?></div>
-<div class="title_head"><h1><?php echo $list->name?></h1></div>
-<div id="description"><?php echo $list->get('descriptionHtml', ESC_RAW)?></div>
-<ul id="todo" class="ui-widget ui-helper-reset">
-  <?php foreach ($rows as $row): ?>
-    <?php include_partial('list/item',array('item' => $row['item'], 'include_dashboard_links' => true, 'owner' => $owner, 'form' => $row['form']))?>
-  <?php endforeach; ?>
-</ul>
-<div id="foot-show">
-<?php if ($owner): ?>
-<button id="add_item" type="button"><?php echo "Add item"?></button>
-<?php endif?>
-<?php echo link_to('Print', "list/print?id=$list->id")?>
