@@ -31,6 +31,7 @@ class SkinnyListForm extends BaseSkinnyListForm
       'private' => 'Mark this if you don\'t want this list to be public'
     ));
 
+    $this->setDefault('private', false);
 
     $oDecorator = new sfWidgetFormSchemaFormatterDiv($this->getWidgetSchema());
     $this->getWidgetSchema()->addFormFormatter('div', $oDecorator);
