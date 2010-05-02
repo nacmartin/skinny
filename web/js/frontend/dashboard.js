@@ -2,11 +2,15 @@ $(document).ready(function()
 {
   var toggleTodo = function(){
     var header = $(this).hasClass(".header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
+    if (!header.hasClass(".hascontent")){
+      return;
+    }
     var todo = header.closest(".todo");
     var content = header.next();
     if (!header.hasClass("ui-state-active"))
     {
       todo.addClass("active");
+      header.find('.icon-show').removeClass("ui-icon-triangle-1-e").addClass("ui-icon-triangle-1-s");
       header
         .removeClass("ui-corner-all ui-state-default")
         .addClass("ui-state-active ui-corner-top")
@@ -19,6 +23,7 @@ $(document).ready(function()
     else
     {
       todo.removeClass("active");
+      header.find('.icon-show').removeClass("ui-icon-triangle-1-s").addClass("ui-icon-triangle-1-e");
       header
         .removeClass("ui-state-active ui-corner-top")
         .addClass("ui-corner-all ui-state-default")

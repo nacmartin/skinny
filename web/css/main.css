@@ -547,6 +547,9 @@ fieldset {
     margin-top: 10px;
     cursor: pointer;
 }
+.icon-show {
+    margin-top: 5px;
+}
 
 .ui-state-highlight {
     height: 1.5em;
