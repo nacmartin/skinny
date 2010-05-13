@@ -105,6 +105,10 @@ $(function() {
   $('.todo-show').each(function(){ $(this).show()});
   $('#todo .formitem').each(function(){ $(this).hide()});
 
+  $('#form-new div form > input').click(function() {
+    $(this).parent().submit();
+  });
+
 });
 
 
