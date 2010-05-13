@@ -578,6 +578,13 @@ fieldset {
     text-shadow: #888 0px 0px 10px;
 }
 
+.title_head_center h1{
+    font-size: 45px;
+}
+.title_head_center h2{
+    font-size: 36px;
+}
+
 div.fiftypercent {
     width: 48%;
     float: left;
