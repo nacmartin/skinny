@@ -320,10 +320,9 @@ div.javascriptOff p
 {
 	clear: both;
 	position: relative;
-	top: -3px;
-    list-style-type: none; 
-    margin: 0; 
-    padding: 0; 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0; 
 }
 
 #todo .thumb
@@ -336,7 +335,8 @@ div.javascriptOff p
 {
 	margin: 1em 0;
 }
-#todo .ui-widget-header
+#todo .ui-widget-header,
+.newitem .ui-widget-header
 {
 	position: relative;
 	margin-top: 3px;

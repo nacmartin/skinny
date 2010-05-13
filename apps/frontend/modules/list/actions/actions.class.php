@@ -61,6 +61,7 @@ class listActions extends sfActions
         'form' => new SkinnyItemForm($item) );
     }
     $this->owner = $this->getUser()->isOwnerOf($this->list);
+    $this->newItemForm = new SkinnyItemForm();
 
     //SEO
     $response = $this->getResponse();
@@ -159,14 +160,16 @@ class listActions extends sfActions
   public function executeAddSkinnyItem($request)
   {
     $this->forward404unless($request->isXmlHttpRequest());
-
+    //Security check
     $item = new SkinnyItem();
     $item->list_id = $request->getParameter('id');
-    $item->moveToLast();
-    $item->save();
     $form = new SkinnyItemForm($item);
-
+    $form->bind($request->getParameter($form->getName()));
+    if($form->isValid()){
+      $item = $form->save();
+    }
     return $this->renderPartial('item', array('item' => $item, 'include_dashboard_links' => true, 'form' => $form, 'owner' => true));
+
   }
 
   public function executeCheckItem($request)
