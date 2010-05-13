@@ -37,42 +37,52 @@ $(function() {
     });
   });
 
+  function submitForm(form){
+    id = form.parent().parent().attr('id');
+    item_id = id.substring(5);
+    alert(item_id);
+    if (item_id == 'new'){
+      alert("vamos al ajax");
+      $.ajax({
+        type: "POST",
+        url: "<?php echo url_for('list/addSkinnyItem')?>",
+        data: form.serialize()+'&id=<?php echo $list->id?>',
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          alert('There is a problem with the connection. Please, retry in some time.');
+        },
+        success: function(data){
+          alert("funca");
+          //newit = $("#todo").append(data)
+          //newit.find('textarea:last-child').markedit();
+          //$('#form-new input:first').val("");
+          //$('#form-new textarea').val("");
+        }
+      });
+    }else{
+      $.ajax({
+        type: "GET",
+        dataType: "html",
+        url: "<?php echo url_for('list/updateSkinnyItem')?>",
+        data: form.serialize()+'&id=<?php echo $list->id?>'+
+              '&item_id='+item_id,
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          alert('There is a problem with the connection. Please, retry in some time.');
+        },
+        success: function(data){
+          $('#'+id).replaceWith(data);
+          $('#'+id).children('.formitem').find('textarea:last-child').markedit();
+          $('#'+id).children('.formitem').hide();
+          $('#'+id).children('.todo-show').show();
+        }
+      });
+    }
+    return false;
+
+  }
+
   $('form').live('submit', function() {
-      id = $(this).parent().parent().attr('id');
-      item_id = id.substring(5);
-      if (item_id == 'new'){
-        $.ajax({
-          type: "POST",
-          url: "<?php echo url_for('list/addSkinnyItem')?>",
-          data: $(this).serialize()+'&id=<?php echo $list->id?>',
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert('There is a problem with the connection. Please, retry in some time.');
-          },
-          success: function(data){
-            newit = $("#todo").append(data)
-            newit.find('textarea:last-child').markedit();
-            $('#form-new input#skinny_item_name').val("");
-            $('#form-new textarea').val("");
-          }
-        });
-      }else{
-        $.ajax({
-          type: "POST",
-          url: "<?php echo url_for('list/updateSkinnyItem')?>",
-          data: $(this).serialize()+'&id=<?php echo $list->id?>'+
-                '&item_id='+item_id,
-          error: function(XMLHttpRequest, textStatus, errorThrown) {
-            alert('There is a problem with the connection. Please, retry in some time.');
-          },
-          success: function(data){
-            $('#'+id).replaceWith(data);
-            $('#'+id).children('.formitem').find('textarea:last-child').markedit();
-            $('#'+id).children('.formitem').hide();
-            $('#'+id).children('.todo-show').show();
-          }
-        });
-      }
-      return false;
+    submitForm($(this));
+    return false;
   });
 
   $('.icon-edit').live('click',function(){
@@ -106,7 +116,8 @@ $(function() {
   $('#todo .formitem').each(function(){ $(this).hide()});
 
   $('#form-new div form > input').click(function() {
-    $(this).parent().submit();
+    submitForm($(this).parent());
+    return false;
   });
 
 });
