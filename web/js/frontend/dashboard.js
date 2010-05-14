@@ -1,8 +1,9 @@
 $(document).ready(function()
 {
   var toggleTodo = function(){
-    var header = $(this).hasClass(".header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
-    if (!header.hasClass(".hascontent")){
+    var header = $(this).hasClass(".item-header") ? $(this) : $(this).closest(".todo").find(".ui-widget-header:first");
+    if (!header.hasClass("hascontent")){
+      
       return;
     }
     var todo = header.closest(".todo");
