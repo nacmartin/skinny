@@ -30,6 +30,10 @@ dev:
       delivery_strategy: none
 
 all:
+  user:
+    class: myUser
+    param:
+      timeout: 7200
   routing:
     class: sfPatternRouting
     param:
