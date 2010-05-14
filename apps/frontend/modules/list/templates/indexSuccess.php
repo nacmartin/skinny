@@ -1,7 +1,7 @@
 <div class="fiftypercent">
 <center>
-<div class="title_head_center"><h1>Create Lists<h1>
-<h2>In a supple way<h2></div>
+<div class="title_head_center"><h1>Create Lists</h1>
+<h2>In a supple way</h2></div>
 <p class="bigtext">Make lists easily.<br/> Detail your items as much as you need.</p>
 <div class="register bigtext">
 <?php echo link_to('Sign up for free', '@register',array('class'=>'pinkrounded'))?>
