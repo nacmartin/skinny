@@ -37,30 +37,30 @@ $(function() {
     });
   });
 
+  $.ajaxSetup({cache: false});
+
   function submitForm(form){
-    id = form.parent().parent().attr('id');
-    item_id = id.substring(5);
-    alert(item_id);
+    id = form.attr('id');
+    item_id = id.substring(11);
     if (item_id == 'new'){
-      alert("vamos al ajax");
       $.ajax({
         type: "POST",
+        dataType: "html",
         url: "<?php echo url_for('list/addSkinnyItem')?>",
         data: form.serialize()+'&id=<?php echo $list->id?>',
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           alert('There is a problem with the connection. Please, retry in some time.');
         },
-        success: function(data){
-          alert("funca");
-          //newit = $("#todo").append(data)
-          //newit.find('textarea:last-child').markedit();
-          //$('#form-new input:first').val("");
-          //$('#form-new textarea').val("");
+        success: function(data, textStatus, XMLHttpRequest){
+          newit = $("#todo").append(data);
+          newit.find('textarea:last-child').markedit();
+          $('#form-new input:first').val("");
+          $('#form-new textarea').val("");
         }
       });
     }else{
       $.ajax({
-        type: "GET",
+        type: "POST",
         dataType: "html",
         url: "<?php echo url_for('list/updateSkinnyItem')?>",
         data: form.serialize()+'&id=<?php echo $list->id?>'+
@@ -68,11 +68,11 @@ $(function() {
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           alert('There is a problem with the connection. Please, retry in some time.');
         },
-        success: function(data){
-          $('#'+id).replaceWith(data);
-          $('#'+id).children('.formitem').find('textarea:last-child').markedit();
-          $('#'+id).children('.formitem').hide();
-          $('#'+id).children('.todo-show').show();
+        success: function(data, textStatus, XMLHttpRequest){
+          $('#todo-'+item_id).replaceWith(data);
+          $('#todo-'+item_id).children('.formitem').find('textarea:last-child').markedit();
+          $('#todo-'+item_id).children('.formitem').hide();
+          $('#todo-'+item_id).children('.todo-show').show();
         }
       });
     }
@@ -115,7 +115,7 @@ $(function() {
   $('.todo-show').each(function(){ $(this).show()});
   $('#todo .formitem').each(function(){ $(this).hide()});
 
-  $('#form-new div form > input').click(function() {
+  $('.formitem form > input').live('click',function() {
     submitForm($(this).parent());
     return false;
   });

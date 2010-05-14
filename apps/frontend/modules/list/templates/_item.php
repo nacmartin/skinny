@@ -35,7 +35,7 @@
   </div>
   <?php if ($owner):?>
   <div class="formitem" id="form-<?php echo $item->id?>" style="display:none;">
-    <form>
+  <form id="actualform-<?php echo $item->id?>">
       <div class="ui-widget-header ui-helper-reset ui-corner-all ui-state-default">
       <?php echo $form['name']->render()?><?php echo $form['id']->render()?></div>
       <div><?php echo $form['text']->render()?></div>
