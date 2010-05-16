@@ -21,8 +21,8 @@
  * 
  * @package    skinny
  * @subpackage model
- * @author     Your name here
- * @version    SVN: $Id: Builder.php 7021 2010-01-12 20:39:49Z lsmith $
+ * @author     Nacho Martín
+ * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BasesfGuardUserGroup extends sfDoctrineRecord
 {
@@ -32,12 +32,12 @@ abstract class BasesfGuardUserGroup extends sfDoctrineRecord
         $this->hasColumn('user_id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
-             'length' => '4',
+             'length' => 4,
              ));
         $this->hasColumn('group_id', 'integer', 4, array(
              'type' => 'integer',
              'primary' => true,
-             'length' => '4',
+             'length' => 4,
              ));
 
         $this->option('symfony', array(
@@ -59,7 +59,8 @@ abstract class BasesfGuardUserGroup extends sfDoctrineRecord
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
 
-        $timestampable0 = new Doctrine_Template_Timestampable();
+        $timestampable0 = new Doctrine_Template_Timestampable(array(
+             ));
         $this->actAs($timestampable0);
     }
 }

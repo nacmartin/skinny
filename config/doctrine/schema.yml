@@ -27,7 +27,6 @@ SkinnyItem:
       unique: true
     Sortable:
       type:      integer
-      length:    1
       indexName: item_sortable
       options:
         unsigned: true

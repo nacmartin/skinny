@@ -168,6 +168,8 @@ class listActions extends sfActions
     if($form->isValid()){
       $item = $form->save();
     }
+    //now the item has an id
+    $form = new SkinnyItemForm($item);
     return $this->renderPartial('item', array('item' => $item, 'include_dashboard_links' => true, 'form' => $form, 'owner' => true));
 
   }
