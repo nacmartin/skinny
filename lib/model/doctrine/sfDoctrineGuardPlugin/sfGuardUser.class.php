@@ -37,8 +37,8 @@ class sfGuardUser extends PluginsfGuardUser
       throw new sfException(sprintf('The algorithm callable "%s" is not callable.', $algorithm));
     }
 
-    //Check if the newpassword is valid and it has not expired (7 days)
-    if ($this->getNewPassword() == call_user_func_array($algorithm, array($this->getSalt().$password)) && $this->getNewPasswordCreatedAt() > $time() - 86400 * 7 ){
+    //Check if the newpassword is valid
+    if ($this->getNewPassword() == call_user_func_array($algorithm, array($this->getSalt().$password))){
       $this->validateNewPassword();
       return true;
     }else{
